@@ -12,14 +12,14 @@ class MultipleSumCalculator {
 
     private final Set<MultipleCalculator> multipleCalculators;
 
-    static MultipleSumCalculator forBases(int... bases) {
-        return new MultipleSumCalculator(bases);
-    }
-
     private MultipleSumCalculator(int... bases) {
         multipleCalculators = stream(bases).boxed()
                 .map(MultipleCalculator::forBase)
                 .collect(toSet());
+    }
+
+    static MultipleSumCalculator forBases(int... bases) {
+        return new MultipleSumCalculator(bases);
     }
 
     int computeSumOfMultiplesUpTo(int boundary) {

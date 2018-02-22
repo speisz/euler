@@ -3,28 +3,67 @@ package com.github.speisz.euler.utils;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.math.BigInteger;
+import java.util.List;
+import java.util.stream.LongStream;
 
+import static java.lang.Math.floor;
+import static java.lang.Math.sqrt;
 import static java.math.BigInteger.ZERO;
+import static java.math.BigInteger.valueOf;
+import static java.util.stream.Stream.iterate;
 
 public abstract class MathUtils {
-    public static boolean isEven(BigInteger value) {
-        return value.mod(BigInteger.valueOf(2)).equals(ZERO);
+    public static final BigInteger TWO = valueOf(2);
+
+    public static boolean isEven(BigInteger n) {
+        return isDivisible(n, BigInteger.valueOf(2));
     }
 
-    public static boolean lowerOrEqual(BigInteger first, BigInteger second) {
-        return first.compareTo(second) < 1;
+    public static boolean isEven(long n) {
+        return isDivisble(n, 2);
     }
 
-    public static boolean isDivisible(BigInteger m, BigInteger n) {
-        return m.mod(n).equals(ZERO);
+    public static boolean lowerOrEqual(BigInteger n, BigInteger m) {
+        return n.compareTo(m) < 1;
     }
 
     public static boolean isPythagorean(Triple<Integer, Integer, Integer> triple) {
         return square(triple.getLeft()) + square(triple.getMiddle()) == square(triple.getRight());
     }
 
+    public static BigInteger findNextPrime(List<BigInteger> primes) {
+        return iterate(primes.get(primes.size() - 1).add(TWO), m -> m.add(TWO))
+                .filter(m -> isNotDivisibleByAny(m, primes))
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("Number of primes is not infinite?!"));
+    }
+
+    private static boolean isNotDivisibleByAny(BigInteger number, List<BigInteger> potentialDivisors) {
+        return potentialDivisors.stream().noneMatch(divisor -> isDivisible(number, divisor));
+    }
+
+    private static boolean isDivisible(BigInteger divident, BigInteger divisor) {
+        return divident.mod(divisor).equals(ZERO);
+    }
+
     private static int square(int n) {
         return n * n;
+    }
+
+    public static boolean isPrime(long n) {
+        return n > 1 && LongStream.rangeClosed(2, flooredSqrt(n)).allMatch(k -> isNotDivisible(n, k));
+    }
+
+    private static boolean isNotDivisible(long divident, long divisor) {
+        return !isDivisble(divident, divisor);
+    }
+
+    private static boolean isDivisble(long divident, long divisor) {
+        return divident % divisor == 0;
+    }
+
+    private static int flooredSqrt(double n) {
+        return (int) floor(sqrt(n));
     }
 
     private MathUtils() {

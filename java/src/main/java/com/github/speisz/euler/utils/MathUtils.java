@@ -5,9 +5,11 @@ import org.apache.commons.lang3.tuple.Triple;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 import static java.lang.Math.floor;
 import static java.lang.Math.sqrt;
+import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.ZERO;
 import static java.math.BigInteger.valueOf;
 import static java.util.stream.Stream.iterate;
@@ -20,7 +22,7 @@ public abstract class MathUtils {
     }
 
     public static boolean isEven(long n) {
-        return isDivisble(n, 2);
+        return isDivisible(n, 2);
     }
 
     public static boolean lowerOrEqual(BigInteger n, BigInteger m) {
@@ -42,7 +44,7 @@ public abstract class MathUtils {
         return potentialDivisors.stream().noneMatch(divisor -> isDivisible(number, divisor));
     }
 
-    private static boolean isDivisible(BigInteger divident, BigInteger divisor) {
+    public static boolean isDivisible(BigInteger divident, BigInteger divisor) {
         return divident.mod(divisor).equals(ZERO);
     }
 
@@ -50,15 +52,33 @@ public abstract class MathUtils {
         return n * n;
     }
 
+    public static boolean isPrime(BigInteger n) {
+        if (n.equals(TWO)) {
+            return true;
+        }
+        return !lowerOrEqual(n, ONE) && BoundedStream.of(Stream.iterate(TWO, ONE::add))
+                .withBreakCondition(current -> lowerOrEqual(current, roundedSqrt(n)))
+                .noneMatch(current -> isDivisible(n, current));
+    }
+
+    public static BigInteger roundedSqrt(BigInteger n) {
+        BigInteger div = BigInteger.ZERO.setBit(n.bitLength() / 2);
+        return roundedSqrtIteration(n, div, div);
+    }
+
+    private static BigInteger roundedSqrtIteration(BigInteger n, BigInteger div, BigInteger oldDiv) {
+        BigInteger newDiv = div.add(n.divide(div)).shiftRight(1);
+        if (newDiv.equals(div) || newDiv.equals(oldDiv)) {
+            return newDiv;
+        }
+        return roundedSqrtIteration(n, newDiv, div);
+    }
+
     public static boolean isPrime(long n) {
-        return n > 1 && LongStream.rangeClosed(2, flooredSqrt(n)).allMatch(k -> isNotDivisible(n, k));
+        return n > 1 && LongStream.rangeClosed(2, flooredSqrt(n)).noneMatch(k -> isDivisible(n, k));
     }
 
-    private static boolean isNotDivisible(long divident, long divisor) {
-        return !isDivisble(divident, divisor);
-    }
-
-    private static boolean isDivisble(long divident, long divisor) {
+    private static boolean isDivisible(long divident, long divisor) {
         return divident % divisor == 0;
     }
 

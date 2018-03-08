@@ -16,7 +16,7 @@ class FibonacciEvenSumCalculator {
     BigInteger sum(BigInteger boundary) {
         Sum sum = new Sum();
         BoundedStream.of(evenFibonaccis())
-                .withBreakCondition(number -> lowerOrEqual(number, boundary))
+                .withConditionExclusive(number -> lowerOrEqual(number, boundary))
                 .doForEach(sum::add);
         return sum.get();
     }

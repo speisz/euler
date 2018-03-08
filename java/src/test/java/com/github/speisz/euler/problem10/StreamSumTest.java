@@ -12,12 +12,12 @@ public class StreamSumTest {
 
     @Test
     public void sumsAllIntegersUpToUpperBound() {
-        assertThat(streamSum.get(5), is(1 + 2 + 3 + 4 + 5));
+        assertThat(streamSum.get(5), is(1 + 2 + 3 + 4 + 5L));
     }
 
     @Test
     public void sumsAllIntegersWithGivenConditionUpToUpperBound() {
-        assertThat(streamSum.get(5, MathUtils::isEven), is(2 + 4));
+        assertThat(streamSum.get(5, MathUtils::isEven), is(2 + 4L));
     }
 
     @Test

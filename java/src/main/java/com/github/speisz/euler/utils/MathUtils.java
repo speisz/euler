@@ -57,7 +57,7 @@ public abstract class MathUtils {
             return true;
         }
         return !lowerOrEqual(n, ONE) && BoundedStream.of(Stream.iterate(TWO, ONE::add))
-                .withBreakCondition(current -> lowerOrEqual(current, roundedSqrt(n)))
+                .withConditionExclusive(current -> lowerOrEqual(current, roundedSqrt(n)))
                 .noneMatch(current -> isDivisible(n, current));
     }
 

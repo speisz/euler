@@ -6,7 +6,7 @@ import static java.util.stream.LongStream.rangeClosed;
 
 public class StreamSum {
     public long get(int upperBound, LongPredicate condition) {
-        return rangeClosed(2, upperBound)
+        return rangeClosed(1, upperBound)
                 .filter(condition)
                 .sum();
     }

@@ -3,8 +3,8 @@ package com.github.speisz.euler.problem14;
 import java.math.BigInteger;
 import java.util.stream.Stream;
 
-import static com.github.speisz.euler.utils.MathUtils.TWO;
-import static com.github.speisz.euler.utils.MathUtils.isEven;
+import static com.github.speisz.euler.utils.MathUtil.TWO;
+import static com.github.speisz.euler.utils.MathUtil.isEven;
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.valueOf;
 

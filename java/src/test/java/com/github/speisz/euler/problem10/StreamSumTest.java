@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem10;
 
-import com.github.speisz.euler.utils.MathUtils;
+import com.github.speisz.euler.utils.MathUtil;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
@@ -17,16 +17,16 @@ public class StreamSumTest {
 
     @Test
     public void sumsAllIntegersWithGivenConditionUpToUpperBound() {
-        assertThat(streamSum.get(5, MathUtils::isEven), is(2 + 4L));
+        assertThat(streamSum.get(5, MathUtil::isEven), is(2 + 4L));
     }
 
     @Test
     public void sumsAllPrimes() {
-        assertThat(streamSum.get(20, MathUtils::isPrime), is(2 + 3 + 5 + 7 + 11 + 13 + 17 + 19L));
+        assertThat(streamSum.get(20, MathUtil::isPrime), is(2 + 3 + 5 + 7 + 11 + 13 + 17 + 19L));
     }
 
     @Test
     public void sumsAllPrimesForHighUpperBound() {
-        assertThat(streamSum.get(2_000_000, MathUtils::isPrime), is(142913828922L));
+        assertThat(streamSum.get(2_000_000, MathUtil::isPrime), is(142913828922L));
     }
 }

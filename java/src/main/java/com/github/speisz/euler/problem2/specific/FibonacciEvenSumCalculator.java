@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 import static java.math.BigInteger.ZERO;
 import static com.github.speisz.euler.utils.Fibonacci.evenFibonaccis;
-import static com.github.speisz.euler.utils.MathUtils.lowerOrEqual;
+import static com.github.speisz.euler.utils.MathUtil.lowerOrEqual;
 
 class FibonacciEvenSumCalculator {
     BigInteger sum(long boundary) {

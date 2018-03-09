@@ -1,7 +1,7 @@
 package com.github.speisz.euler.problem9;
 
-import com.github.speisz.euler.utils.MathUtils;
-import com.github.speisz.euler.utils.TripleUtils;
+import com.github.speisz.euler.utils.MathUtil;
+import com.github.speisz.euler.utils.TripleUtil;
 import com.github.speisz.euler.utils.Tuple;
 import org.apache.commons.lang3.tuple.Triple;
 
@@ -17,8 +17,8 @@ public class PythagoreanTripleStream implements Supplier<Stream<Triple<Integer, 
     @Override
     public Stream<Triple<Integer, Integer, Integer>> get() {
         return descendingTripleStream(descendingTupleStream(iterate(5, operand -> operand + 1)))
-                .map(TripleUtils::swapLeftAndRight)
-                .filter(MathUtils::isPythagorean);
+                .map(TripleUtil::swapLeftAndRight)
+                .filter(MathUtil::isPythagorean);
     }
 
     private Stream<Triple<Integer, Integer, Integer>> descendingTripleStream(Stream<Tuple<Integer>> tupleStream) {

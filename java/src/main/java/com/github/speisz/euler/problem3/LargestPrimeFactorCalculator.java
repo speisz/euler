@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.ZERO;
 import static java.math.BigInteger.valueOf;
-import static com.github.speisz.euler.utils.MathUtils.lowerOrEqual;
+import static com.github.speisz.euler.utils.MathUtil.lowerOrEqual;
 
 class LargestPrimeFactorCalculator {
     BigInteger calculateFor(BigInteger number) {

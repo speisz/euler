@@ -1,13 +1,12 @@
 package com.github.speisz.euler.problem9;
 
-import com.github.speisz.euler.utils.MathUtils;
 import org.apache.commons.lang3.tuple.Triple;
 import org.junit.Test;
 
 import java.util.List;
 import java.util.Optional;
 
-import static com.github.speisz.euler.utils.MathUtils.isPythagorean;
+import static com.github.speisz.euler.utils.MathUtil.isPythagorean;
 import static java.util.stream.Collectors.toList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;

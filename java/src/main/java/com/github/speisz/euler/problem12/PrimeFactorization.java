@@ -4,9 +4,9 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.github.speisz.euler.utils.MathUtils.isDivisible;
-import static com.github.speisz.euler.utils.MathUtils.isPrime;
-import static com.github.speisz.euler.utils.MathUtils.lowerOrEqual;
+import static com.github.speisz.euler.utils.MathUtil.isDivisible;
+import static com.github.speisz.euler.utils.MathUtil.isPrime;
+import static com.github.speisz.euler.utils.MathUtil.lowerOrEqual;
 import static java.math.BigInteger.ONE;
 
 public class PrimeFactorization {

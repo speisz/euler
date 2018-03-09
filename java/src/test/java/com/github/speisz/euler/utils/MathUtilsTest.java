@@ -2,8 +2,8 @@ package com.github.speisz.euler.utils;
 
 import org.junit.Test;
 
-import static com.github.speisz.euler.utils.MathUtils.isPrime;
-import static com.github.speisz.euler.utils.MathUtils.roundedSqrt;
+import static com.github.speisz.euler.utils.MathUtil.isPrime;
+import static com.github.speisz.euler.utils.MathUtil.roundedSqrt;
 import static java.math.BigInteger.valueOf;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;

@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 import static java.math.BigInteger.ZERO;
 import static com.github.speisz.euler.utils.Fibonacci.fibonaccis;
 import static com.github.speisz.euler.utils.Fibonacci.upperBoundForNumberOfIterations;
-import static com.github.speisz.euler.utils.MathUtils.lowerOrEqual;
+import static com.github.speisz.euler.utils.MathUtil.lowerOrEqual;
 
 class FibonacciSumCalculator {
     private Predicate<BigInteger> condition;

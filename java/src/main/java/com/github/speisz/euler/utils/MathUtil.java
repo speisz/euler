@@ -14,7 +14,7 @@ import static java.math.BigInteger.ZERO;
 import static java.math.BigInteger.valueOf;
 import static java.util.stream.Stream.iterate;
 
-public abstract class MathUtils {
+public abstract class MathUtil {
     public static final BigInteger TWO = valueOf(2);
 
     public static boolean isEven(BigInteger n) {
@@ -34,6 +34,12 @@ public abstract class MathUtils {
     }
 
     public static BigInteger findNextPrime(List<BigInteger> primes) {
+        if (primes.isEmpty()) {
+            return TWO;
+        }
+        if (primes.size() == 1) {
+            return valueOf(3);
+        }
         return iterate(primes.get(primes.size() - 1).add(TWO), m -> m.add(TWO))
                 .filter(m -> isNotDivisibleByAny(m, primes))
                 .findFirst()
@@ -86,6 +92,6 @@ public abstract class MathUtils {
         return (int) floor(sqrt(n));
     }
 
-    private MathUtils() {
+    private MathUtil() {
     }
 }

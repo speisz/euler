@@ -2,7 +2,7 @@ package com.github.speisz.euler.problem2.generic;
 
 import org.junit.Before;
 import org.junit.Test;
-import com.github.speisz.euler.utils.MathUtils;
+import com.github.speisz.euler.utils.MathUtil;
 
 import static java.math.BigInteger.valueOf;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -16,7 +16,7 @@ public class FibonacciSumCalculatorTest {
     @Before
     public void setUp() throws Exception {
         fibonacciSumCalculator = new FibonacciSumCalculator();
-        evenFibonacciSumCalculator = new FibonacciSumCalculator(MathUtils::isEven);
+        evenFibonacciSumCalculator = new FibonacciSumCalculator(MathUtil::isEven);
     }
 
     @Test

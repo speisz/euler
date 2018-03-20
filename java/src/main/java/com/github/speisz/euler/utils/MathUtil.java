@@ -12,6 +12,7 @@ import static java.lang.Math.sqrt;
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.ZERO;
 import static java.math.BigInteger.valueOf;
+import static java.util.stream.IntStream.generate;
 import static java.util.stream.Stream.iterate;
 
 public abstract class MathUtil {
@@ -90,6 +91,12 @@ public abstract class MathUtil {
 
     private static int flooredSqrt(double n) {
         return (int) floor(sqrt(n));
+    }
+
+    public static int pow(int base, int exponent) {
+        return generate(() -> base)
+                .limit(exponent)
+                .reduce(1, (k, l) -> k * l);
     }
 
     private MathUtil() {

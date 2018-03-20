@@ -3,6 +3,7 @@ package com.github.speisz.euler.utils;
 import org.junit.Test;
 
 import static com.github.speisz.euler.utils.MathUtil.isPrime;
+import static com.github.speisz.euler.utils.MathUtil.pow;
 import static com.github.speisz.euler.utils.MathUtil.roundedSqrt;
 import static java.math.BigInteger.valueOf;
 import static org.hamcrest.Matchers.is;
@@ -48,5 +49,15 @@ public class MathUtilsTest {
         assertThat(roundedSqrt(valueOf(14)), is(valueOf(3)));
         assertThat(roundedSqrt(valueOf(15)), is(valueOf(4)));
         assertThat(roundedSqrt(valueOf(24)), is(valueOf(4)));
+    }
+
+    @Test
+    public void computesPowersOfIntegers() {
+        assertThat(pow(1, 0), is(1));
+        assertThat(pow(1, 1), is(1));
+        assertThat(pow(2, 0), is(1));
+        assertThat(pow(2, 1), is(2));
+        assertThat(pow(2, 2), is(4));
+        assertThat(pow(3, 3), is(27));
     }
 }

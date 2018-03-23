@@ -1,10 +1,10 @@
-package com.github.speisz.euler.problem16;
+package com.github.speisz.euler.utils;
 
 import java.math.BigInteger;
 
 import static java.math.BigInteger.ZERO;
 
-public class DigitSum {
+public class CrossSum {
     public static BigInteger of(BigInteger n) {
         return n.toString()
                 .chars()

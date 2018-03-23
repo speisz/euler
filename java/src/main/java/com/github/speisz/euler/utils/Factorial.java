@@ -5,11 +5,14 @@ import java.math.BigInteger;
 import static java.math.BigInteger.ONE;
 import static java.util.stream.LongStream.rangeClosed;
 
-public abstract class Faculty {
+public abstract class Factorial {
     public static BigInteger of(int m) {
-        return rangeClosed(1, m).mapToObj(BigInteger::valueOf).reduce(BigInteger::multiply).orElse(ONE);
+        return rangeClosed(1, m)
+                .mapToObj(BigInteger::valueOf)
+                .reduce(BigInteger::multiply)
+                .orElse(ONE);
     }
 
-    private Faculty() {
+    private Factorial() {
     }
 }

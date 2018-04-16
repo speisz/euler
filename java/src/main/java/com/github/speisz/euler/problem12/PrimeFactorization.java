@@ -20,18 +20,18 @@ public class PrimeFactorization {
         }
         for (BigInteger k = ONE; lowerOrEqual(k, n); k = k.add(ONE)) {
             if (isDivisible(n, k) && isPrime(k)) {
-                addToPrimeFactorization(k, primeFactorization);
-                return findNextPrimeAndPutToMap(n.divide(k), primeFactorization);
+                int multiplicityOfDivisorK = findMultiplicityOfDivisor(n, k);
+                primeFactorization.put(k, multiplicityOfDivisorK);
+                return findNextPrimeAndPutToMap(n.divide(k.pow(multiplicityOfDivisorK)), primeFactorization);
             }
         }
         return primeFactorization;
     }
 
-    private static void addToPrimeFactorization(BigInteger k, Map<BigInteger, Integer> primeFactorization) {
-        if (primeFactorization.containsKey(k)) {
-            primeFactorization.replace(k, primeFactorization.get(k) + 1);
-        } else {
-            primeFactorization.put(k, 1);
+    private static int findMultiplicityOfDivisor(BigInteger divident, BigInteger divisor) {
+        if (!isDivisible(divident, divisor)) {
+            return 0;
         }
+        return findMultiplicityOfDivisor(divident.divide(divisor), divisor) + 1;
     }
 }

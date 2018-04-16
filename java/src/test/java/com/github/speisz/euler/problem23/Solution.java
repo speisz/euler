@@ -16,7 +16,7 @@ public class Solution {
     private static final int UPPER_BORDER_FOR_ABUNDANT_NUMBERS = 28123;
 
     @Test
-    public void __() {
+    public void computesSumOfNonAbundantSumNumbers() {
         Set<Integer> abundantNumbers = rangeClosed(SMALLEST_ABUNDANT_NUMBER, UPPER_BORDER_FOR_ABUNDANT_NUMBERS)
                 .filter(isAbundantNumber())
                 .boxed()
@@ -27,10 +27,10 @@ public class Solution {
                 .distinct()
                 .collect(toSet());
 
-        int sumOfNotAbundantSumNumbers = rangeClosed(1, UPPER_BORDER_FOR_ABUNDANT_NUMBERS)
+        int sumOfNonAbundantSumNumbers = rangeClosed(1, UPPER_BORDER_FOR_ABUNDANT_NUMBERS)
                 .filter(i -> !abundantNumberSums.contains(i))
                 .sum();
         
-        assertThat(sumOfNotAbundantSumNumbers, is(4179871));
+        assertThat(sumOfNonAbundantSumNumbers, is(4179871));
     }
 }

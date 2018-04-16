@@ -1,5 +1,6 @@
 package com.github.speisz.euler.utils;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.math.BigInteger;
@@ -20,13 +21,13 @@ public class Fibonacci {
     }
 
     public static Stream<BigInteger> fibonaccis(BigInteger firstSeed, BigInteger secondSeed) {
-        return Stream.iterate(Pair.of(firstSeed, secondSeed), t -> Pair.of(t.second, t.first.add(t.second)))
-                .map(Pair::first);
+        return Stream.iterate(Pair.of(firstSeed, secondSeed), t -> Pair.of(t.getRight(), t.getLeft().add(t.getRight())))
+                .map(Pair::getLeft);
     }
 
     public static Stream<BigInteger> evenFibonaccis() {
-        return Stream.iterate(Pair.of(valueOf(2), valueOf(8)), t -> Pair.of(t.second, t.first.add(t.second.multiply(valueOf(4)))))
-                .map(Pair::first);
+        return Stream.iterate(Pair.of(valueOf(2), valueOf(8)), t -> Pair.of(t.getRight(), t.getLeft().add(t.getRight().multiply(valueOf(4)))))
+                .map(Pair::getLeft);
     }
 
     public static Stream<org.apache.commons.lang3.tuple.Pair<Integer, BigInteger>> indexedFibonaccis() {

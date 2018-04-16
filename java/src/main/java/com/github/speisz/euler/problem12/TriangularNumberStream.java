@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem12;
 
-import com.github.speisz.euler.utils.Pair;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.math.BigInteger;
 import java.util.function.Supplier;
@@ -12,11 +12,11 @@ public class TriangularNumberStream implements Supplier<Stream<BigInteger>> {
     @Override
     public Stream<BigInteger> get() {
         return Stream.iterate(Pair.of(ONE, ONE), this::nextTriangularNumber)
-                .map(Pair::second);
+                .map(Pair::getRight);
     }
 
-    private Pair<BigInteger> nextTriangularNumber(Pair<BigInteger> triangularNumber) {
-        BigInteger currentSequentialNumber = triangularNumber.first.add(ONE);
-        return Pair.of(currentSequentialNumber, triangularNumber.second.add(currentSequentialNumber));
+    private Pair<BigInteger, BigInteger> nextTriangularNumber(Pair<BigInteger, BigInteger> triangularNumber) {
+        BigInteger currentSequentialNumber = triangularNumber.getLeft().add(ONE);
+        return Pair.of(currentSequentialNumber, triangularNumber.getRight().add(currentSequentialNumber));
     }
 }

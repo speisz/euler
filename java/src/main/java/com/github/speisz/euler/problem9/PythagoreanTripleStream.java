@@ -2,7 +2,7 @@ package com.github.speisz.euler.problem9;
 
 import com.github.speisz.euler.utils.MathUtil;
 import com.github.speisz.euler.utils.TripleUtil;
-import com.github.speisz.euler.utils.Pair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.function.Supplier;
@@ -21,23 +21,23 @@ public class PythagoreanTripleStream implements Supplier<Stream<Triple<Integer, 
                 .filter(MathUtil::isPythagorean);
     }
 
-    private Stream<Triple<Integer, Integer, Integer>> descendingTripleStream(Stream<Pair<Integer>> tupleStream) {
+    private Stream<Triple<Integer, Integer, Integer>> descendingTripleStream(Stream<Pair<Integer, Integer>> tupleStream) {
         return tupleStream
                 .map(this::allDescendingTriples)
                 .flatMap(identity());
     }
 
-    private Stream<Pair<Integer>> descendingTupleStream(IntStream stream) {
+    private Stream<Pair<Integer, Integer>> descendingTupleStream(IntStream stream) {
         return stream
                 .mapToObj(this::allDescendingTuples)
                 .flatMap(identity());
     }
 
-    private Stream<Triple<Integer, Integer, Integer>> allDescendingTriples(Pair<Integer> tuple) {
-        return range(1, tuple.second).mapToObj(third -> Triple.of(tuple.first, tuple.second, third));
+    private Stream<Triple<Integer, Integer, Integer>> allDescendingTriples(Pair<Integer, Integer> tuple) {
+        return range(1, tuple.getRight()).mapToObj(third -> Triple.of(tuple.getLeft(), tuple.getRight(), third));
     }
 
-    private Stream<Pair<Integer>> allDescendingTuples(int first) {
+    private Stream<Pair<Integer, Integer>> allDescendingTuples(int first) {
         return range(1, first).mapToObj(second -> Pair.of(first, second));
     }
 }

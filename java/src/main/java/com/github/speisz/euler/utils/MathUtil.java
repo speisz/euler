@@ -30,6 +30,10 @@ public abstract class MathUtil {
         return n.compareTo(m) < 1;
     }
 
+    public static boolean greaterOrEqual(BigInteger n, BigInteger m) {
+        return n.compareTo(m) > -1;
+    }
+
     public static boolean isPythagorean(Triple<Integer, Integer, Integer> triple) {
         return square(triple.getLeft()) + square(triple.getMiddle()) == square(triple.getRight());
     }
@@ -100,5 +104,9 @@ public abstract class MathUtil {
     }
 
     private MathUtil() {
+    }
+
+    public static BigInteger[] bigIntegerValuesOf(Integer... integers) {
+        return Stream.of(integers).map(BigInteger::valueOf).toArray(BigInteger[]::new);
     }
 }

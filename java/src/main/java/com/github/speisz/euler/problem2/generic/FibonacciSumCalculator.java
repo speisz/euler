@@ -3,10 +3,12 @@ package com.github.speisz.euler.problem2.generic;
 import java.math.BigInteger;
 import java.util.function.Predicate;
 
-import static java.math.BigInteger.ZERO;
 import static com.github.speisz.euler.utils.Fibonacci.fibonaccis;
 import static com.github.speisz.euler.utils.Fibonacci.upperBoundForNumberOfIterations;
+import static com.github.speisz.euler.utils.MathUtil.TWO;
 import static com.github.speisz.euler.utils.MathUtil.lowerOrEqual;
+import static java.math.BigInteger.ONE;
+import static java.math.BigInteger.ZERO;
 
 class FibonacciSumCalculator {
     private Predicate<BigInteger> condition;
@@ -24,7 +26,7 @@ class FibonacciSumCalculator {
     }
 
     BigInteger sum(BigInteger boundary) {
-        return fibonaccis()
+        return fibonaccis(ONE, TWO)
                 .limit(upperBoundForNumberOfIterations(boundary).longValue()) // urgh... In Java 9: .takeWhile(value -> value < boundary)
                 .filter(value -> lowerOrEqual(value, boundary))
                 .filter(condition)

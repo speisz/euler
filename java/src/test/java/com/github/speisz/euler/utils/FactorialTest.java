@@ -16,6 +16,6 @@ public class FactorialTest {
         assertThat(Factorial.of(3), is(BigInteger.valueOf(3 * 2)));
         assertThat(Factorial.of(4), is(BigInteger.valueOf(4 * 3 * 2)));
         assertThat(Factorial.of(5), is(BigInteger.valueOf(5 * 4 * 3 * 2)));
-        assertThat(Factorial.of(10), is(BigInteger.valueOf(5 * 4 * 3 * 2)));
+        assertThat(Factorial.of(10), is(BigInteger.valueOf(3628800)));
     }
 }

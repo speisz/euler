@@ -1,7 +1,7 @@
 package com.github.speisz.euler.problem4;
 
 import org.junit.Test;
-import com.github.speisz.euler.utils.Tuple;
+import com.github.speisz.euler.utils.Pair;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -20,36 +20,36 @@ public class CartesianProductTest {
 
     @Test
     public void buildsCartesianForTwoOneElementCollections() {
-        List<Tuple<String>> product = computeFor(singletonList("a"), singletonList("b"));
+        List<Pair<String>> product = computeFor(singletonList("a"), singletonList("b"));
         assertThat(product, hasSize(1));
-        assertThat(product, hasItem(Tuple.of("a", "b")));
+        assertThat(product, hasItem(Pair.of("a", "b")));
     }
 
     @Test
     public void buildsCartesianForTwoArbitraryCollections() {
-        List<Tuple<String>> product = computeFor(asList("a", "b"), asList("a", "d", "e"));
+        List<Pair<String>> product = computeFor(asList("a", "b"), asList("a", "d", "e"));
         assertThat(product, hasSize(6));
         assertThat(product, hasItems(
-                Tuple.of("a", "a"),
-                Tuple.of("a", "d"),
-                Tuple.of("a", "e"),
-                Tuple.of("b", "a"),
-                Tuple.of("b", "d"),
-                Tuple.of("b", "e")
+                Pair.of("a", "a"),
+                Pair.of("a", "d"),
+                Pair.of("a", "e"),
+                Pair.of("b", "a"),
+                Pair.of("b", "d"),
+                Pair.of("b", "e")
         ));
     }
 
     @Test
     public void buildsCartesianStreamForTwoArbitraryStreams() {
-        List<Tuple<String>> product = computeForStreams(() -> Stream.of("a", "b"), () -> Stream.of("a", "d", "e")).collect(toList());
+        List<Pair<String>> product = computeForStreams(() -> Stream.of("a", "b"), () -> Stream.of("a", "d", "e")).collect(toList());
         assertThat(product, hasSize(6));
         assertThat(product, hasItems(
-                Tuple.of("a", "a"),
-                Tuple.of("a", "d"),
-                Tuple.of("a", "e"),
-                Tuple.of("b", "a"),
-                Tuple.of("b", "d"),
-                Tuple.of("b", "e")
+                Pair.of("a", "a"),
+                Pair.of("a", "d"),
+                Pair.of("a", "e"),
+                Pair.of("b", "a"),
+                Pair.of("b", "d"),
+                Pair.of("b", "e")
         ));
     }
 }

@@ -28,17 +28,6 @@ public class Solution {
         assertThat(sundaysOnFirstOfMonthCount, is(171L));
     }
 
-    @Test
-    public void print() {
-        BoundedStream.of(
-                iterate(FIRST_OF_1901, time -> time.plusDays(1))
-                        .filter(this::isFirstOfMonth)
-                        .filter(this::isSunday))
-                .withConditionExclusive(FIRST_OF_2001::isAfter)
-                .get()
-                .forEach(System.out::println);
-    }
-
     private boolean isSunday(LocalDateTime date) {
         return DayOfWeek.SUNDAY.equals(date.getDayOfWeek());
     }

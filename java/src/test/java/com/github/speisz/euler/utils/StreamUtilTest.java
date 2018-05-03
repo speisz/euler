@@ -9,12 +9,22 @@ import java.util.stream.Stream;
 
 import static com.github.speisz.euler.utils.StreamUtil.descendingPairStream;
 import static com.github.speisz.euler.utils.StreamUtil.descendingTripleStream;
+import static com.github.speisz.euler.utils.StreamUtil.pairStream;
 import static com.github.speisz.euler.utils.StreamUtil.streamBuilderFrom;
 import static java.util.stream.Collectors.toList;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 
 public class StreamUtilTest {
+
+    @Test
+    public void createsStreamOfPairs() {
+        assertThat(pairStream(() -> Stream.of(2, 4)).collect(toList()), contains(
+                Pair.of(2, 2),
+                Pair.of(2, 4),
+                Pair.of(4, 2),
+                Pair.of(4, 4)));
+    }
 
     @Test
     public void createsStreamOfDescendingPositiveIntegerPairs() {

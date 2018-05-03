@@ -4,9 +4,12 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static java.util.Comparator.comparing;
 import static java.util.function.Function.identity;
 import static java.util.stream.IntStream.range;
 
@@ -39,4 +42,16 @@ public class StreamUtil {
         return range(1, tuple.getRight()).mapToObj(third -> Triple.of(tuple.getLeft(), tuple.getRight(), third));
     }
 
+    public static <T> Stream<Pair<T, T>> pairStream(Supplier<Stream<T>> streamSupplier) {
+        return streamSupplier.get()
+                .flatMap(first -> streamSupplier.get().map(second -> Pair.of(first, second)));
+    }
+
+    /* Optimization for stream.max(comparing(comparingFunction)) to evaluate comparingFunction only once per element. */
+    public static <T, U extends Comparable<? super U>> Optional<T> max(Stream<T> stream, Function<T, U> comparingFunction) {
+        return stream
+                .map(element -> Pair.of(element, comparingFunction.apply(element)))
+                .max(comparing(Pair::getValue))
+                .map(Pair::getLeft);
+    }
 }

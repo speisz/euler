@@ -43,8 +43,12 @@ public class StreamUtil {
     }
 
     public static <T> Stream<Pair<T, T>> pairStream(Supplier<Stream<T>> streamSupplier) {
-        return streamSupplier.get()
-                .flatMap(first -> streamSupplier.get().map(second -> Pair.of(first, second)));
+        return pairStream(streamSupplier, streamSupplier);
+    }
+
+    public static <T, U> Stream<Pair<T, U>> pairStream(Supplier<Stream<T>> firstStreamSupplier, Supplier<Stream<U>> secondStreamSupplier) {
+        return firstStreamSupplier.get()
+                .flatMap(first -> secondStreamSupplier.get().map(second -> Pair.of(first, second)));
     }
 
     /* Optimization for stream.max(comparing(comparingFunction)) to evaluate comparingFunction only once per element. */

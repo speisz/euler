@@ -2,10 +2,15 @@ package com.github.speisz.euler.utils;
 
 import org.junit.Test;
 
+import java.math.BigInteger;
+
+import static com.github.speisz.euler.utils.MathUtil.digits;
 import static com.github.speisz.euler.utils.MathUtil.isPrime;
 import static com.github.speisz.euler.utils.MathUtil.pow;
 import static com.github.speisz.euler.utils.MathUtil.roundedSqrt;
 import static java.math.BigInteger.valueOf;
+import static java.util.stream.Collectors.toList;
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -59,5 +64,11 @@ public class MathUtilsTest {
         assertThat(pow(2, 1), is(2));
         assertThat(pow(2, 2), is(4));
         assertThat(pow(3, 3), is(27));
+    }
+
+    @Test
+    public void streamsDigits() {
+        assertThat(digits(123).boxed().collect(toList()), contains(1, 2, 3));
+        assertThat(digits(BigInteger.valueOf(123)).boxed().collect(toList()), contains(1, 2, 3));
     }
 }

@@ -4,6 +4,7 @@ import org.apache.commons.lang3.tuple.Triple;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
@@ -108,5 +109,19 @@ public abstract class MathUtil {
 
     public static BigInteger[] bigIntegerValuesOf(Integer... integers) {
         return Stream.of(integers).map(BigInteger::valueOf).toArray(BigInteger[]::new);
+    }
+
+    public static IntStream digits(BigInteger n) {
+        return digits(n.toString());
+    }
+
+    public static IntStream digits(long n) {
+        return digits(String.valueOf(n));
+    }
+
+    private static IntStream digits(String string) {
+        return string
+                .chars()
+                .map(Character::getNumericValue);
     }
 }

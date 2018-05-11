@@ -1,8 +1,8 @@
 package com.github.speisz.euler.problem32;
 
-import java.util.function.LongPredicate;
 import java.util.function.Predicate;
 
+import static com.github.speisz.euler.utils.LongUtil.containedIn;
 import static com.github.speisz.euler.utils.MathUtil.digits;
 import static java.util.stream.LongStream.rangeClosed;
 
@@ -16,7 +16,4 @@ public class IsPandigital implements Predicate<Long> {
         return rangeClosed(1, digits(n).count()).allMatch(containedIn(n));
     }
 
-    private LongPredicate containedIn(Long n) {
-        return digit -> digits(n).anyMatch(digitOfN -> digitOfN == digit);
-    }
 }

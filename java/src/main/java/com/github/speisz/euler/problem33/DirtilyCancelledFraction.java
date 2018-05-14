@@ -12,17 +12,14 @@ import static org.apache.commons.lang3.math.Fraction.getFraction;
 
 public class DirtilyCancelledFraction {
 
-    private int numerator;
-    private int denominator;
+    private Fraction cancelledFraction;
 
     public static DirtilyCancelledFraction of(Fraction fraction) {
         return new DirtilyCancelledFraction(fraction);
     }
 
-    private DirtilyCancelledFraction(Fraction fraction) {
-        Fraction cancelledFraction = dirtyCancellation(fraction);
-        this.numerator = cancelledFraction.getNumerator();
-        this.denominator = cancelledFraction.getDenominator();
+    private DirtilyCancelledFraction(Fraction initialFraction) {
+        cancelledFraction = dirtyCancellation(initialFraction);
     }
 
     private Fraction dirtyCancellation(Fraction fraction) {
@@ -60,6 +57,6 @@ public class DirtilyCancelledFraction {
     }
 
     Fraction asFraction() {
-        return getFraction(numerator, denominator);
+        return cancelledFraction;
     }
 }

@@ -1,9 +1,16 @@
-package com.github.speisz.euler.problem4;
+package com.github.speisz.euler.utils;
 
 import java.util.function.Predicate;
 
-class StringPalindromeCheck implements Predicate<String> {
-    
+public class StringPalindromeCheck implements Predicate<String> {
+
+    private StringPalindromeCheck() {
+    }
+
+    public static StringPalindromeCheck create() {
+        return new StringPalindromeCheck();
+    }
+
     @Override
     public boolean test(String string) {
         return isOneCharacterOrEmpty(string) || !firstAndLastCharacterDiffer(string) && test(cutFirstAndLastCharacter(string));

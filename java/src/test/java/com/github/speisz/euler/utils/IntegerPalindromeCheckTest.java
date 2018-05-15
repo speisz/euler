@@ -1,4 +1,4 @@
-package com.github.speisz.euler.problem4;
+package com.github.speisz.euler.utils;
 
 import org.junit.Test;
 
@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 public class IntegerPalindromeCheckTest {
 
-    private IntegerPalindromeCheck palindromeCheck = new IntegerPalindromeCheck();
+    private IntegerPalindromeCheck palindromeCheck = IntegerPalindromeCheck.create();
 
     @Test
     public void statesNonPalindromesCorrectly() {

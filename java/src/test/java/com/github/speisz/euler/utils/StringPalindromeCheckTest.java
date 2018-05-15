@@ -1,4 +1,4 @@
-package com.github.speisz.euler.problem4;
+package com.github.speisz.euler.utils;
 
 import org.junit.Test;
 
@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 public class StringPalindromeCheckTest {
 
-    private StringPalindromeCheck stringPalindromeCheck = new StringPalindromeCheck();
+    private StringPalindromeCheck stringPalindromeCheck = StringPalindromeCheck.create();
 
     @Test
     public void statesSingleCharacterStringsAsPalindromes() {

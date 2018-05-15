@@ -1,10 +1,12 @@
 package com.github.speisz.euler.problem4;
 
+import com.github.speisz.euler.utils.IntegerPalindromeCheck;
+
 import static java.util.stream.IntStream.rangeClosed;
 
 class LargestPalindromeProduct {
 
-    private IntegerPalindromeCheck palindromeCheck = new IntegerPalindromeCheck();
+    private IntegerPalindromeCheck palindromeCheck = IntegerPalindromeCheck.create();
 
     int compute(int digits) {
         int upper = (int) (Math.pow(10, digits) - 1);

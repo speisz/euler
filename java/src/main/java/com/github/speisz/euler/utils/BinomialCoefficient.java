@@ -1,5 +1,7 @@
 package com.github.speisz.euler.utils;
 
+import com.github.speisz.euler.math.Factorial;
+
 import java.math.BigInteger;
 
 public abstract class BinomialCoefficient {

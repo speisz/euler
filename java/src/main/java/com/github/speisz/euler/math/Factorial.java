@@ -1,4 +1,4 @@
-package com.github.speisz.euler.utils;
+package com.github.speisz.euler.math;
 
 import java.math.BigInteger;
 

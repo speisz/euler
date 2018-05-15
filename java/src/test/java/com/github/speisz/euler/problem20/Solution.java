@@ -1,7 +1,7 @@
 package com.github.speisz.euler.problem20;
 
 import com.github.speisz.euler.utils.CrossSum;
-import com.github.speisz.euler.utils.Factorial;
+import com.github.speisz.euler.math.Factorial;
 import org.junit.Test;
 
 import static java.math.BigInteger.valueOf;

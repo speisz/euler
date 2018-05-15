@@ -1,20 +1,21 @@
 package com.github.speisz.euler.problem24;
 
+import com.github.speisz.euler.utils.LexicographicPermutations;
 import com.github.speisz.euler.utils.StreamUtil;
 import org.junit.Test;
 
-import java.util.Set;
-import java.util.stream.IntStream;
+import java.util.List;
 
 import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toSet;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.IntStream.rangeClosed;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 public class Solution {
     @Test
     public void findsMillionthPermutationOfDigits() {
-        String millionthPermutation = StreamUtil.lastElement(LexicographicPermutations.stream(rangeAsSet(0, 9)).limit(1_000_000))
+        String millionthPermutation = StreamUtil.lastElement(LexicographicPermutations.stream(rangeAsList(0, 9)).limit(1_000_000))
                 .map(permutation -> permutation.stream().collect(joining()))
                 .orElseThrow(() -> new RuntimeException("No permutations were generated."));
 
@@ -22,7 +23,7 @@ public class Solution {
     }
 
     @SuppressWarnings("SameParameterValue")
-    private Set<String> rangeAsSet(int startInclusive, int endInclusive) {
-        return IntStream.rangeClosed(startInclusive, endInclusive).boxed().map(String::valueOf).collect(toSet());
+    private List<String> rangeAsList(int startInclusive, int endInclusive) {
+        return rangeClosed(startInclusive, endInclusive).boxed().map(String::valueOf).collect(toList());
     }
 }

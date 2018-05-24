@@ -11,11 +11,13 @@ public class BoundedStream<T> {
     private Stream<T> stream;
     private Predicate<T> conditionExclusive;
     private Predicate<T> conditionInclusive;
+    private Predicate<T> breakConditionInclusive;
 
     private BoundedStream(Stream<T> stream) {
         this.stream = stream;
         this.conditionExclusive = t -> true;
         this.conditionInclusive = t -> true;
+        this.breakConditionInclusive = t -> false;
     }
 
     public static <T> BoundedStream<T> of(Stream<T> stream) {
@@ -32,6 +34,11 @@ public class BoundedStream<T> {
         return this;
     }
 
+    public BoundedStream<T> withBreakConditionInclusive(Predicate<T> condition) {
+        breakConditionInclusive = condition;
+        return this;
+    }
+
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void doForEach(Consumer<T> consumer) {
         stream
@@ -42,7 +49,7 @@ public class BoundedStream<T> {
     }
 
     private Predicate<T> allConditions() {
-        return conditionExclusive.and(conditionInclusive);
+        return conditionExclusive.and(conditionInclusive).and(breakConditionInclusive.negate());
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")

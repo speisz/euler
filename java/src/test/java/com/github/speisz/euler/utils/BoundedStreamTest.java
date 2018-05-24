@@ -8,6 +8,7 @@ import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 
 public class BoundedStreamTest {
+
     @Test
     public void createsStreamWithGivenExclusiveCondition() {
         assertThat(BoundedStream.of(iterate(1, n -> n + 1))
@@ -15,10 +16,19 @@ public class BoundedStreamTest {
                 .get()
                 .collect(toList()), contains(1, 2, 3));
     }
+
     @Test
     public void createsStreamWithGivenInclusiveCondition() {
         assertThat(BoundedStream.of(iterate(1, n -> n + 1))
                 .withConditionInclusive(n -> n != 4)
+                .get()
+                .collect(toList()), contains(1, 2, 3, 4));
+    }
+
+    @Test
+    public void createsStreamWithGivenBreakCondition() {
+        assertThat(BoundedStream.of(iterate(1, n -> n + 1))
+                .withBreakConditionInclusive(n -> n == 4)
                 .get()
                 .collect(toList()), contains(1, 2, 3, 4));
     }

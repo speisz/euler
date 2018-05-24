@@ -18,7 +18,7 @@ public class Solution {
         long count = rangeClosed(2, UPPER_BOUND).boxed()
                 .filter(PRIME_SIEVE)
                 .filter(this::isCircularPrime)
-                .peek(System.out::println)
+//                .peek(System.out::println)
                 .count();
 
         assertThat(count, is(55L));

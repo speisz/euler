@@ -1,8 +1,8 @@
-package com.github.speisz.euler.problem32;
+package com.github.speisz.euler.math;
 
 import org.junit.Test;
 
-import static com.github.speisz.euler.problem32.IsPandigital.isPandigital;
+import static com.github.speisz.euler.math.IsPandigital.isPandigital;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 

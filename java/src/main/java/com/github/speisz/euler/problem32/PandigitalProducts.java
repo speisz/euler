@@ -4,7 +4,7 @@ import com.github.speisz.euler.utils.BoundedStream;
 
 import java.util.stream.Stream;
 
-import static com.github.speisz.euler.problem32.IsPandigital.isPandigital;
+import static com.github.speisz.euler.math.IsPandigital.isPandigital;
 import static com.github.speisz.euler.utils.IntUtil.concat;
 import static com.github.speisz.euler.utils.MathUtil.digits;
 import static java.util.stream.IntStream.rangeClosed;

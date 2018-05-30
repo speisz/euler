@@ -36,7 +36,11 @@ public abstract class MathUtil {
     }
 
     public static boolean isPythagorean(Triple<Integer, Integer, Integer> triple) {
-        return square(triple.getLeft()) + square(triple.getMiddle()) == square(triple.getRight());
+        return isPythagorean(triple.getLeft(), triple.getMiddle(), triple.getRight());
+    }
+
+    public static boolean isPythagorean(Integer a, Integer b, Integer c) {
+        return square(a) + square(b) == square(c);
     }
 
     public static BigInteger findNextPrime(List<BigInteger> primes) {

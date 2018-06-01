@@ -4,6 +4,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
@@ -15,6 +16,10 @@ import static java.util.stream.IntStream.range;
 
 public class StreamUtil {
     public static <T> Optional<T> lastElement(Stream<T> stream) {
+        return stream.reduce((first, second) -> second);
+    }
+
+    public static OptionalInt lastElement(IntStream stream) {
         return stream.reduce((first, second) -> second);
     }
 

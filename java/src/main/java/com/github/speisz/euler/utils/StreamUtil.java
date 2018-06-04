@@ -63,4 +63,8 @@ public class StreamUtil {
                 .max(comparing(Pair::getValue))
                 .map(Pair::getLeft);
     }
+
+    public static <T> Optional<T> nthElement(Stream<T> stream, long number) {
+        return lastElement(stream.limit(number));
+    }
 }

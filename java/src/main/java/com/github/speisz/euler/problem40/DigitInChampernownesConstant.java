@@ -1,26 +1,48 @@
 package com.github.speisz.euler.problem40;
 
 import com.github.speisz.euler.utils.BoundedStream;
-import org.apache.commons.lang3.tuple.Pair;
-
-import java.util.stream.Stream;
 
 import static com.github.speisz.euler.utils.MathUtil.digits;
 import static com.github.speisz.euler.utils.StreamUtil.lastElement;
-import static java.util.stream.Collectors.toList;
+import static com.github.speisz.euler.utils.StreamUtil.nthElement;
+import static java.util.stream.Stream.iterate;
 
 class DigitInChampernownesConstant {
-    static int find(int digitPosition) {
+    static int find(int indexOfDigit) {
         return lastElement(
-                BoundedStream.of(Stream.iterate(Pair.of(1, 1), pair1 -> Pair.of(pair1.getLeft() + 1, pair1.getRight() + (int) digits(pair1.getLeft() + 1).count())))
-                        .withBreakConditionInclusive(pair1 -> pair1.getRight() >= digitPosition)
+                BoundedStream.of(iterate(Position.of(indexOfDigit), Position::moveToNextNumber))
+                        .withBreakConditionInclusive(Position::isAtCorrectNumber)
                         .get())
-                .map(pair -> findDigit(digitPosition, pair.getLeft(), pair.getRight()))
+                .map(Position::findDigit)
                 .orElseThrow(RuntimeException::new);
     }
 
-    private static Integer findDigit(int digitPosition, Integer numberAtTheEndContainingDigit, Integer overallDigitCount) {
-        return digits(numberAtTheEndContainingDigit).boxed().collect(toList())
-                .get((int) digits(numberAtTheEndContainingDigit).count() - 1 - (overallDigitCount - digitPosition));
+    static class Position {
+        private Integer findDigit() {
+            return nthElement(digits(numberAtTheEndContainingDigit).boxed(), (int) digits(numberAtTheEndContainingDigit).count() - (overallDigitCount - indexOfDigit))
+                    .orElseThrow(() -> new IllegalStateException("Position determination must have failed."));
+        }
+
+        private boolean isAtCorrectNumber() {
+            return overallDigitCount >= indexOfDigit;
+        }
+
+        private Position moveToNextNumber() {
+            return new Position(numberAtTheEndContainingDigit + 1, overallDigitCount + (int) digits(numberAtTheEndContainingDigit + 1).count(), indexOfDigit);
+        }
+
+        private int numberAtTheEndContainingDigit;
+        private int overallDigitCount;
+        private int indexOfDigit;
+
+        private Position(int numberAtTheEndContainingDigit, int overallDigitCount, int indexOfDigit) {
+            this.numberAtTheEndContainingDigit = numberAtTheEndContainingDigit;
+            this.overallDigitCount = overallDigitCount;
+            this.indexOfDigit = indexOfDigit;
+        }
+
+        public static Position of(int digitPosition) {
+            return new Position(1, 1, digitPosition);
+        }
     }
 }

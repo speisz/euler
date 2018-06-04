@@ -1,5 +1,6 @@
 package com.github.speisz.euler.utils;
 
+import com.github.speisz.euler.testutils.matcher.OptionalMatchers;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 import org.junit.Test;
@@ -7,12 +8,17 @@ import org.junit.Test;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static com.github.speisz.euler.testutils.matcher.OptionalMatchers.hasValue;
 import static com.github.speisz.euler.utils.StreamUtil.descendingPairStream;
 import static com.github.speisz.euler.utils.StreamUtil.descendingTripleStream;
+import static com.github.speisz.euler.utils.StreamUtil.nthElement;
 import static com.github.speisz.euler.utils.StreamUtil.pairStream;
 import static com.github.speisz.euler.utils.StreamUtil.streamBuilderFrom;
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.LongStream.range;
+import static java.util.stream.LongStream.rangeClosed;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class StreamUtilTest {
@@ -59,5 +65,10 @@ public class StreamUtilTest {
     @Test
     public void createsIntStreamBuilderFromIntStream() {
         assertThat(streamBuilderFrom(IntStream.of(1)).build().boxed().collect(toList()), contains(1));
+    }
+
+    @Test
+    public void retrievesNthElementOfStream() {
+        assertThat(nthElement(rangeClosed(1, 100_000_000L).boxed(), 50_000_000L), hasValue(50_000_000L));
     }
 }

@@ -1,5 +1,6 @@
 package com.github.speisz.euler.problem22;
 
+import com.github.speisz.euler.utils.AlphabeticalValueCalculator;
 import org.junit.Test;
 
 import static java.math.BigInteger.valueOf;

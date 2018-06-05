@@ -8,12 +8,14 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
+import static com.github.speisz.euler.utils.StreamUtil.lastElement;
 import static java.lang.Math.floor;
 import static java.lang.Math.sqrt;
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.ZERO;
 import static java.math.BigInteger.valueOf;
 import static java.util.stream.IntStream.generate;
+import static java.util.stream.IntStream.iterate;
 import static java.util.stream.Stream.iterate;
 
 public abstract class MathUtil {
@@ -64,7 +66,7 @@ public abstract class MathUtil {
         return divident.mod(divisor).equals(ZERO);
     }
 
-    private static int square(int n) {
+    public static int square(int n) {
         return n * n;
     }
 
@@ -127,5 +129,15 @@ public abstract class MathUtil {
         return string
                 .chars()
                 .map(Character::getNumericValue);
+    }
+
+    public static boolean isPerfectSquare(int n) {
+        int firstSquareNotLowerThanN = lastElement(
+                BoundedIntStream.of(iterate(1, i -> i + 1)
+                        .map(MathUtil::square))
+                        .withBreakConditionInclusive(i -> i >= n)
+                        .get())
+                .orElseThrow(RuntimeException::new);
+        return firstSquareNotLowerThanN == n;
     }
 }

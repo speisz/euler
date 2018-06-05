@@ -1,4 +1,4 @@
-package com.github.speisz.euler.problem22;
+package com.github.speisz.euler.utils;
 
 public class AlphabeticalValueCalculator implements WordValueCalculator {
 
@@ -23,6 +23,7 @@ public class AlphabeticalValueCalculator implements WordValueCalculator {
     private AlphabeticalValueCalculator() {
     }
 
+    @SuppressWarnings("unused")
     private enum AlphabeticalValue {
         A(1),
         B(2),

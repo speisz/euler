@@ -5,14 +5,18 @@ import org.junit.Test;
 import java.math.BigInteger;
 
 import static com.github.speisz.euler.utils.MathUtil.digits;
+import static com.github.speisz.euler.utils.MathUtil.isPerfectSquare;
 import static com.github.speisz.euler.utils.MathUtil.isPrime;
 import static com.github.speisz.euler.utils.MathUtil.pow;
 import static com.github.speisz.euler.utils.MathUtil.roundedSqrt;
+import static com.github.speisz.euler.utils.MathUtil.square;
 import static java.math.BigInteger.valueOf;
 import static java.util.stream.Collectors.toList;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class MathUtilsTest {
 
@@ -70,5 +74,19 @@ public class MathUtilsTest {
     public void streamsDigits() {
         assertThat(digits(123).boxed().collect(toList()), contains(1, 2, 3));
         assertThat(digits(BigInteger.valueOf(123)).boxed().collect(toList()), contains(1, 2, 3));
+    }
+
+    @Test
+    public void testsIfNumberIsPerfectSquare() {
+        assertTrue(isPerfectSquare(1));
+        assertTrue(isPerfectSquare(4));
+        assertTrue(isPerfectSquare(9));
+        assertTrue(isPerfectSquare(16));
+        assertTrue(isPerfectSquare(square(123)));
+
+        assertFalse(isPerfectSquare(2));
+        assertFalse(isPerfectSquare(3));
+        assertFalse(isPerfectSquare(5));
+        assertFalse(isPerfectSquare(square(123) + 1));
     }
 }

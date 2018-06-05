@@ -1,5 +1,6 @@
 package com.github.speisz.euler.problem22;
 
+import com.github.speisz.euler.utils.WordValueCalculator;
 import org.junit.Test;
 
 import java.math.BigInteger;

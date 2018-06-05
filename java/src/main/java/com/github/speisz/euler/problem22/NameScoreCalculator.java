@@ -1,5 +1,7 @@
 package com.github.speisz.euler.problem22;
 
+import com.github.speisz.euler.utils.WordValueCalculator;
+
 import java.math.BigInteger;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;

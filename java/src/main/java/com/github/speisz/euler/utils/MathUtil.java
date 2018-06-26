@@ -15,10 +15,13 @@ import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.ZERO;
 import static java.math.BigInteger.valueOf;
 import static java.util.stream.IntStream.generate;
-import static java.util.stream.IntStream.iterate;
 import static java.util.stream.Stream.iterate;
 
 public abstract class MathUtil {
+
+    private MathUtil() {
+    }
+    
     public static final BigInteger TWO = valueOf(2);
 
     public static boolean isEven(BigInteger n) {
@@ -67,6 +70,10 @@ public abstract class MathUtil {
     }
 
     public static int square(int n) {
+        return (int) square((long) n);
+    }
+
+    public static long square(long n) {
         return n * n;
     }
 
@@ -96,7 +103,7 @@ public abstract class MathUtil {
         return n > 1 && LongStream.rangeClosed(2, flooredSqrt(n)).noneMatch(k -> isDivisible(n, k));
     }
 
-    private static boolean isDivisible(long divident, long divisor) {
+    public static boolean isDivisible(long divident, long divisor) {
         return divident % divisor == 0;
     }
 
@@ -108,9 +115,6 @@ public abstract class MathUtil {
         return generate(() -> base)
                 .limit(exponent)
                 .reduce(1, (k, l) -> k * l);
-    }
-
-    private MathUtil() {
     }
 
     public static BigInteger[] bigIntegerValuesOf(Integer... integers) {
@@ -132,8 +136,12 @@ public abstract class MathUtil {
     }
 
     public static boolean isPerfectSquare(int n) {
-        int firstSquareNotLowerThanN = lastElement(
-                iterate(1, i -> i + 1)
+        return isPerfectSquare((long) n);
+    }
+
+    public static boolean isPerfectSquare(long n) {
+        long firstSquareNotLowerThanN = lastElement(
+                iterate(1L, i -> i + 1L)
                         .map(MathUtil::square)
                         .takeWhile(i -> i <= n))
                 .orElseThrow(RuntimeException::new);

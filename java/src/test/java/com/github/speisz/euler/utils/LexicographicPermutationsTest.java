@@ -26,24 +26,14 @@ public class LexicographicPermutationsTest {
     }
 
     @Test
-    public void streamsPermutationsWithSameElements() {
-        Stream<List<String>> permutationsStream = LexicographicPermutations.stream(Stream.of("a", "b", "b").collect(toList()));
-        assertThat(permutationsStream.collect(toList()), contains(
-                asList("a", "b", "b"),
-                asList("b", "a", "b"),
-                asList("b", "b", "a")
-        ));
+    public void streamsPermutationsOfStrings() {
+        Stream<String> permutationsStream = LexicographicPermutations.stream("123");
+        assertThat(permutationsStream.collect(toList()), contains("123", "132", "213", "231", "312", "321"));
     }
-
+    
     @Test
     public void streamsPermutationsOfIntegers() {
         Stream<Integer> permutationsStream = LexicographicPermutations.stream(123);
         assertThat(permutationsStream.collect(toList()), contains(123, 132, 213, 231, 312, 321));
-    }
-
-    @Test
-    public void streamsPermutationsOfIntegersContainingSameDigitMultipleTimes() {
-        Stream<Integer> permutationsStream = LexicographicPermutations.stream(122);
-        assertThat(permutationsStream.collect(toList()), contains(122, 212, 221));
     }
 }

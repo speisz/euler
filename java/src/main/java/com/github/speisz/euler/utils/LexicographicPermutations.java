@@ -16,18 +16,25 @@ public class LexicographicPermutations {
                 .map(Integer::parseInt);
     }
 
-    public static Stream<List<String>> stream(List<String> elements) {
+    public static Stream<String> stream(String string) {
+        return stream(
+                string.chars()
+                        .mapToObj(item -> (char) item)
+                        .collect(toList()))
+                .map(chars -> chars.stream().map(String::valueOf).collect(joining()));
+    }
+
+    public static <T> Stream<List<T>> stream(List<T> elements) {
         if (elements.size() == 0) {
             return Stream.of(newArrayList());
         }
         return elements.stream()
                 .sorted()
-                .flatMap(element -> streamWithElementFirst(elements, element))
-                .distinct();
+                .flatMap(element -> streamWithElementFirst(elements, element));
     }
 
-    private static Stream<List<String>> streamWithElementFirst(List<String> elements, String firstElement) {
-        List<String> elementsWithoutFirst = newArrayList(elements);
+    private static <T> Stream<List<T>> streamWithElementFirst(List<T> elements, T firstElement) {
+        List<T> elementsWithoutFirst = newArrayList(elements);
         elementsWithoutFirst.remove(firstElement);
         return stream(elementsWithoutFirst).peek(permutation -> permutation.add(0, firstElement));
     }

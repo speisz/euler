@@ -1,7 +1,6 @@
 package com.github.speisz.euler.problem14;
 
 import java.math.BigInteger;
-import java.util.Comparator;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
@@ -26,6 +25,7 @@ public class SeedForMaximumChain {
     }
 
     static class SeedAndChainCount {
+
         BigInteger seed;
         long count;
 

@@ -1,7 +1,5 @@
 package com.github.speisz.euler.problem14;
 
-import com.github.speisz.euler.utils.BoundedStream;
-
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
@@ -12,16 +10,16 @@ import static java.util.stream.Stream.iterate;
 public class Sequence<T> {
     private T seed;
     private final UnaryOperator<T> rule;
-    private final Predicate<T> breakCondition;
+    private final Predicate<T> condition;
 
-    Sequence(T seed, UnaryOperator<T> rule, Predicate<T> breakCondition) {
+    Sequence(T seed, UnaryOperator<T> rule, Predicate<T> condition) {
         this.seed = seed;
         this.rule = rule;
-        this.breakCondition = breakCondition;
+        this.condition = condition;
     }
 
     public Stream<T> compute() {
-        return BoundedStream.of(iterate(seed, rule)).withConditionInclusive(breakCondition.negate()).get();
+        return iterate(seed, rule).takeWhile(condition);
     }
 
     public static <T> Builder<T> builder() {
@@ -31,7 +29,7 @@ public class Sequence<T> {
     static class Builder<T> {
         private T seed;
         private UnaryOperator<T> rule;
-        private Predicate<T> breakCondition;
+        private Predicate<T> condition;
 
         private Builder() {
         }
@@ -46,13 +44,13 @@ public class Sequence<T> {
             return this;
         }
 
-        public Builder<T> withBreakCondition(Predicate<T> breakCondition) {
-            this.breakCondition = breakCondition;
+        public Builder<T> withCondition(Predicate<T> condition) {
+            this.condition = condition;
             return this;
         }
 
         public Sequence<T> build() {
-            return new Sequence<>(requireNonNull(seed), requireNonNull(rule), requireNonNull(breakCondition));
+            return new Sequence<>(requireNonNull(seed), requireNonNull(rule), requireNonNull(condition));
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.github.speisz.euler.problem19;
 
-import com.github.speisz.euler.utils.BoundedStream;
 import org.junit.Test;
 
 import java.time.DayOfWeek;
@@ -17,12 +16,10 @@ public class Solution {
 
     @Test
     public void countSundaysOnFirstOfMonthCount() {
-        long sundaysOnFirstOfMonthCount = BoundedStream.of(
-                iterate(FIRST_OF_1901, time -> time.plusDays(1))
-                        .filter(this::isFirstOfMonth)
-                        .filter(this::isSunday))
-                .withConditionExclusive(FIRST_OF_2001::isAfter)
-                .get()
+        long sundaysOnFirstOfMonthCount = iterate(FIRST_OF_1901, time -> time.plusDays(1))
+                .filter(this::isFirstOfMonth)
+                .filter(this::isSunday)
+                .takeWhile(FIRST_OF_2001::isAfter)
                 .count();
 
         assertThat(sundaysOnFirstOfMonthCount, is(171L));

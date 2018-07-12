@@ -1,12 +1,10 @@
 package com.github.speisz.euler.problem2.specific;
 
-import com.github.speisz.euler.utils.BoundedStream;
-
 import java.math.BigInteger;
 
-import static java.math.BigInteger.ZERO;
 import static com.github.speisz.euler.utils.Fibonacci.evenFibonaccis;
 import static com.github.speisz.euler.utils.MathUtil.lowerOrEqual;
+import static java.math.BigInteger.ZERO;
 
 class FibonacciEvenSumCalculator {
     BigInteger sum(long boundary) {
@@ -14,22 +12,6 @@ class FibonacciEvenSumCalculator {
     }
 
     BigInteger sum(BigInteger boundary) {
-        Sum sum = new Sum();
-        BoundedStream.of(evenFibonaccis())
-                .withConditionExclusive(number -> lowerOrEqual(number, boundary))
-                .doForEach(sum::add);
-        return sum.get();
-    }
-
-    class Sum {
-        BigInteger sum = ZERO;
-
-        void add(BigInteger summand) {
-            sum = sum.add(summand);
-        }
-
-        BigInteger get() {
-            return sum;
-        }
+        return evenFibonaccis().takeWhile(number -> lowerOrEqual(number, boundary)).reduce(BigInteger::add).orElse(ZERO);
     }
 }

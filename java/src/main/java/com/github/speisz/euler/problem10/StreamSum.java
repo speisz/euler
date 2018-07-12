@@ -1,13 +1,14 @@
 package com.github.speisz.euler.problem10;
 
-import java.util.function.LongPredicate;
+import java.util.function.IntPredicate;
 
-import static java.util.stream.LongStream.rangeClosed;
+import static java.util.stream.IntStream.rangeClosed;
 
 public class StreamSum {
-    public long get(int upperBound, LongPredicate condition) {
+    public long get(int upperBound, IntPredicate condition) {
         return rangeClosed(1, upperBound)
                 .filter(condition)
+                .mapToLong(n -> n)
                 .sum();
     }
 

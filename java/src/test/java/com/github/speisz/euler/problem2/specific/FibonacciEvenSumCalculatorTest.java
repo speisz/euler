@@ -14,7 +14,7 @@ public class FibonacciEvenSumCalculatorTest {
     private FibonacciEvenSumCalculator calculator;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         calculator = new FibonacciEvenSumCalculator();
     }
 

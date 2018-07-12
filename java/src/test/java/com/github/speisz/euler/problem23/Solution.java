@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.is;
 public class Solution {
 
     private static final int SMALLEST_ABUNDANT_NUMBER = 12;
-    private static final int UPPER_BORDER_FOR_ABUNDANT_NUMBERS = 28123;
+    private static final int UPPER_BORDER_FOR_ABUNDANT_NUMBERS = 28_123;
 
     @Test
     public void computesSumOfNonAbundantSumNumbers() {
@@ -31,6 +31,6 @@ public class Solution {
                 .filter(i -> !abundantNumberSums.contains(i))
                 .sum();
         
-        assertThat(sumOfNonAbundantSumNumbers, is(4179871));
+        assertThat(sumOfNonAbundantSumNumbers, is(4_179_871));
     }
 }

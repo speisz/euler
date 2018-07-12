@@ -74,8 +74,8 @@ public abstract class MathUtil {
         if (n.equals(TWO)) {
             return true;
         }
-        return !lowerOrEqual(n, ONE) && BoundedStream.of(Stream.iterate(TWO, ONE::add))
-                .withConditionExclusive(current -> lowerOrEqual(current, roundedSqrt(n)))
+        return !lowerOrEqual(n, ONE) && iterate(TWO, ONE::add)
+                .takeWhile(current -> lowerOrEqual(current, roundedSqrt(n)))
                 .noneMatch(current -> isDivisible(n, current));
     }
 
@@ -133,10 +133,9 @@ public abstract class MathUtil {
 
     public static boolean isPerfectSquare(int n) {
         int firstSquareNotLowerThanN = lastElement(
-                BoundedIntStream.of(iterate(1, i -> i + 1)
-                        .map(MathUtil::square))
-                        .withBreakConditionInclusive(i -> i >= n)
-                        .get())
+                iterate(1, i -> i + 1)
+                        .map(MathUtil::square)
+                        .takeWhile(i -> i <= n))
                 .orElseThrow(RuntimeException::new);
         return firstSquareNotLowerThanN == n;
     }

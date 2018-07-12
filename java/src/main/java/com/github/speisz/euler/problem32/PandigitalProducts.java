@@ -1,7 +1,5 @@
 package com.github.speisz.euler.problem32;
 
-import com.github.speisz.euler.utils.BoundedStream;
-
 import java.util.stream.Stream;
 
 import static com.github.speisz.euler.math.IsPandigital.isPandigital;
@@ -15,13 +13,11 @@ public class PandigitalProducts {
 
     public static Stream<Integer> stream() {
         return rangeClosed(2, UPPER_BOUND_FOR_FACTOR).boxed()
-                .flatMap(firstFactor ->
-                        BoundedStream.of(rangeClosed(firstFactor + 1, UPPER_BOUND_FOR_FACTOR).boxed())
-                                .withConditionInclusive(secondFactor -> digitCountOfMultiplication(firstFactor, secondFactor) <= 9)
-                                .get()
-                                .filter(secondFactor -> digitCountOfMultiplication(firstFactor, secondFactor) == 9)
-                                .filter(secondFactor -> isPandigitalMultiplication(firstFactor, secondFactor))
-                                .map(secondFactor -> firstFactor * secondFactor))
+                .flatMap(firstFactor -> rangeClosed(firstFactor + 1, UPPER_BOUND_FOR_FACTOR).boxed()
+                        .takeWhile(secondFactor -> digitCountOfMultiplication(firstFactor, secondFactor) <= 9)
+                        .filter(secondFactor -> digitCountOfMultiplication(firstFactor, secondFactor) == 9)
+                        .filter(secondFactor -> isPandigitalMultiplication(firstFactor, secondFactor))
+                        .map(secondFactor -> firstFactor * secondFactor))
                 .distinct();
     }
 

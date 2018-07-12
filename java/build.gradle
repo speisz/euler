@@ -2,15 +2,17 @@ plugins {
     id 'java'
 }
 
+def javaVersion = '10'
+
 compileJava {
-    sourceCompatibility = '1.8'
-    targetCompatibility = '1.8'
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
     options.encoding = 'UTF-8'
 }
 
 compileTestJava {
-    sourceCompatibility = '1.8'
-    targetCompatibility = '1.8'
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
     options.encoding = 'UTF-8'
 }
 

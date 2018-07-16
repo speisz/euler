@@ -1,6 +1,5 @@
 package com.github.speisz.euler.utils;
 
-import com.github.speisz.euler.testutils.matcher.OptionalMatchers;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 import org.junit.Test;
@@ -15,10 +14,8 @@ import static com.github.speisz.euler.utils.StreamUtil.nthElement;
 import static com.github.speisz.euler.utils.StreamUtil.pairStream;
 import static com.github.speisz.euler.utils.StreamUtil.streamBuilderFrom;
 import static java.util.stream.Collectors.toList;
-import static java.util.stream.LongStream.range;
 import static java.util.stream.LongStream.rangeClosed;
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class StreamUtilTest {

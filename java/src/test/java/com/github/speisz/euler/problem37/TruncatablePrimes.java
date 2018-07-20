@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem37;
 
-import com.github.speisz.euler.math.SieveOfEratosthenes;
+import com.github.speisz.euler.math.ScalingPrimeSieve;
 import com.github.speisz.euler.utils.Truncations;
 
 import java.util.function.Predicate;
@@ -19,7 +19,7 @@ public class TruncatablePrimes {
     }
 
     public TruncatablePrimes() {
-        this(new SieveOfEratosthenes(1_000_000));
+        this(new ScalingPrimeSieve(10_000, 10));
     }
 
     Stream<Integer> stream() {

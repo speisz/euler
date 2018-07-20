@@ -9,7 +9,7 @@ import static java.lang.Math.floor;
 import static java.lang.Math.sqrt;
 import static java.util.stream.IntStream.rangeClosed;
 
-public class SieveOfEratosthenes implements Predicate<Integer> {
+public class SieveOfEratosthenes implements Predicate<Integer>, ToIntPredicate {
 
     private final int upperBound;
     private final BitSet isNotPrime;
@@ -18,10 +18,6 @@ public class SieveOfEratosthenes implements Predicate<Integer> {
         this.upperBound = upperBound;
         isNotPrime = new BitSet(upperBound + 1);
         filterOutNonPrimes();
-    }
-
-    public IntPredicate asIntPredicate() {
-        return this::test;
     }
 
     private void filterOutNonPrimes() {

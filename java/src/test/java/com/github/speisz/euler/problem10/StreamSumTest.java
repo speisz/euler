@@ -4,8 +4,6 @@ import com.github.speisz.euler.math.SieveOfEratosthenes;
 import com.github.speisz.euler.utils.MathUtil;
 import org.junit.Test;
 
-import java.util.function.Predicate;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -31,6 +29,6 @@ public class StreamSumTest {
     @Test
     public void sumsAllPrimesForHighUpperBound() {
         SieveOfEratosthenes primeSieve = new SieveOfEratosthenes(2_000_000);
-        assertThat(streamSum.get(2_000_000, primeSieve.asIntPredicate()), is(142913828922L));
+        assertThat(streamSum.get(2_000_000, primeSieve.toIntPredicate()), is(142913828922L));
     }
 }

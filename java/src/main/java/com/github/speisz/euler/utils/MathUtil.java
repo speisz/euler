@@ -147,4 +147,8 @@ public abstract class MathUtil {
                 .orElseThrow(RuntimeException::new);
         return firstSquareNotLowerThanN == n;
     }
+
+    public static boolean isOdd(long n) {
+        return !isEven(n);
+    }
 }

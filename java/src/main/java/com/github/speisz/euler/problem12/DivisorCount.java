@@ -1,5 +1,7 @@
 package com.github.speisz.euler.problem12;
 
+import com.github.speisz.euler.math.PrimeFactorization;
+
 import java.math.BigInteger;
 
 public class DivisorCount {

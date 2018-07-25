@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem21;
 
-import com.github.speisz.euler.problem12.PrimeFactorization;
+import com.github.speisz.euler.math.PrimeFactorization;
 import com.github.speisz.euler.utils.CollectionUtil;
 
 import java.math.BigInteger;

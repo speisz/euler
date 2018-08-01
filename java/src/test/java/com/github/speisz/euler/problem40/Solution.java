@@ -18,6 +18,6 @@ public class Solution {
     }
 
     private int baseTenPower(int exponent) {
-        return MathUtil.pow(10, exponent);
+        return (int) MathUtil.pow(10, exponent);
     }
 }

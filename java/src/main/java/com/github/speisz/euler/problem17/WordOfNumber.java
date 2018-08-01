@@ -34,7 +34,7 @@ public class WordOfNumber {
     }
 
     private static int getDigit(int n, int position) {
-        return n % pow(10, position) / pow(10, position - 1);
+        return n % (int) pow(10, position) / (int) pow(10, position - 1);
     }
 
     private static Optional<String> word(int n, String appendix) {

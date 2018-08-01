@@ -1,9 +1,9 @@
 package com.github.speisz.euler.math;
 
-import com.github.speisz.euler.utils.MathUtil;
 import org.junit.Before;
 import org.junit.Test;
 
+import static com.github.speisz.euler.utils.MathUtil.pow;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertFalse;
@@ -28,7 +28,7 @@ public class ScalingPrimeSieveTest {
 
     @Test
     public void scalesEvenForHigherGaps() {
-        assertTrue(sieve.test(MathUtil.pow(2, 17) - 1));
+        assertTrue(sieve.test((int) pow(2, 17) - 1));
 
         assertThat(sieve.getUpperBound(), is(1_000_000));
     }

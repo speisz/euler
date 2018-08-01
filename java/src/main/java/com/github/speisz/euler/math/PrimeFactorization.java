@@ -9,6 +9,7 @@ import java.util.Map;
 import static com.github.speisz.euler.utils.MathUtil.isDivisible;
 import static com.github.speisz.euler.utils.MathUtil.isPrime;
 import static com.github.speisz.euler.utils.MathUtil.lowerOrEqual;
+import static com.github.speisz.euler.utils.MathUtil.pow;
 import static java.math.BigInteger.ONE;
 
 public class PrimeFactorization {
@@ -42,7 +43,7 @@ public class PrimeFactorization {
             if (isDivisible(n, k) && isPrime(k)) {
                 int multiplicityOfDivisorK = findMultiplicityOfDivisor(n, k);
                 primeFactorization.put(k, multiplicityOfDivisorK);
-                return findNextPrimeAndPutToMap(n / (MathUtil.pow(k, multiplicityOfDivisorK)), primeFactorization);
+                return findNextPrimeAndPutToMap(n / ((int) pow(k, multiplicityOfDivisorK)), primeFactorization);
             }
         }
         return primeFactorization;

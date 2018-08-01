@@ -111,8 +111,8 @@ public abstract class MathUtil {
         return (int) floor(sqrt(n));
     }
 
-    public static int pow(int base, int exponent) {
-        return generate(() -> base)
+    public static long pow(long base, int exponent) {
+        return LongStream.generate(() -> base)
                 .limit(exponent)
                 .reduce(1, (k, l) -> k * l);
     }
@@ -150,5 +150,9 @@ public abstract class MathUtil {
 
     public static boolean isOdd(long n) {
         return !isEven(n);
+    }
+
+    public static long lastDigits(long n, int digitCount) {
+        return n % pow(10L, digitCount);
     }
 }

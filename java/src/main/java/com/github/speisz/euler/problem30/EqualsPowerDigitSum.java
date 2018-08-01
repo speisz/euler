@@ -1,10 +1,9 @@
 package com.github.speisz.euler.problem30;
 
-import com.github.speisz.euler.utils.MathUtil;
-
 import java.util.function.LongPredicate;
 
 import static com.github.speisz.euler.utils.MathUtil.digits;
+import static com.github.speisz.euler.utils.MathUtil.pow;
 
 public class EqualsPowerDigitSum implements LongPredicate {
 
@@ -13,7 +12,7 @@ public class EqualsPowerDigitSum implements LongPredicate {
     @Override
     public boolean test(long number) {
         int sum = digits(number)
-                .map(n -> MathUtil.pow(n, exponent))
+                .map(n -> (int) pow(n, exponent))
                 .sum();
         return number == sum;
     }

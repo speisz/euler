@@ -7,6 +7,7 @@ import java.math.BigInteger;
 import static com.github.speisz.euler.utils.MathUtil.digits;
 import static com.github.speisz.euler.utils.MathUtil.isPerfectSquare;
 import static com.github.speisz.euler.utils.MathUtil.isPrime;
+import static com.github.speisz.euler.utils.MathUtil.lastDigits;
 import static com.github.speisz.euler.utils.MathUtil.pow;
 import static com.github.speisz.euler.utils.MathUtil.roundedSqrt;
 import static com.github.speisz.euler.utils.MathUtil.square;
@@ -62,12 +63,12 @@ public class MathUtilsTest {
 
     @Test
     public void computesPowersOfIntegers() {
-        assertThat(pow(1, 0), is(1));
-        assertThat(pow(1, 1), is(1));
-        assertThat(pow(2, 0), is(1));
-        assertThat(pow(2, 1), is(2));
-        assertThat(pow(2, 2), is(4));
-        assertThat(pow(3, 3), is(27));
+        assertThat(pow(1, 0), is(1L));
+        assertThat(pow(1, 1), is(1L));
+        assertThat(pow(2, 0), is(1L));
+        assertThat(pow(2, 1), is(2L));
+        assertThat(pow(2, 2), is(4L));
+        assertThat(pow(3, 3), is(27L));
     }
 
     @Test
@@ -88,5 +89,12 @@ public class MathUtilsTest {
         assertFalse(isPerfectSquare(3));
         assertFalse(isPerfectSquare(5));
         assertFalse(isPerfectSquare(square(123) + 1));
+    }
+
+    @Test
+    public void truncsIntegerToLastNDigits() {
+        assertThat(lastDigits(12345, 3), is(345L));
+        assertThat(lastDigits(12345, 6), is(12345L));
+        assertThat(lastDigits(12345, 0), is(0L));
     }
 }

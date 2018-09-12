@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem39;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.github.speisz.euler.utils.MathUtil.isPythagorean;
 import static java.util.Comparator.comparing;
@@ -9,10 +9,10 @@ import static java.util.stream.IntStream.rangeClosed;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class Solution {
+class Solution {
 
     @Test
-    public void findsPerimeterWithMostIntegralLengthRightAngleTriangles() {
+    void findsPerimeterWithMostIntegralLengthRightAngleTriangles() {
         assertThat(rangeClosed(3, 1000).boxed()
                 .max(comparing(this::numberOfIntegralLengthRightAngleTriangles))
                 .orElse(3), is(840));

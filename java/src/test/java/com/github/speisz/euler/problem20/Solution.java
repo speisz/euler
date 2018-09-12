@@ -1,16 +1,16 @@
 package com.github.speisz.euler.problem20;
 
-import com.github.speisz.euler.utils.CrossSum;
 import com.github.speisz.euler.math.Factorial;
-import org.junit.Test;
+import com.github.speisz.euler.utils.CrossSum;
+import org.junit.jupiter.api.Test;
 
 import static java.math.BigInteger.valueOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class Solution {
+class Solution {
     @Test
-    public void calculateCrossSumOfFactorialOf100() {
+    void calculateCrossSumOfFactorialOf100() {
         assertThat(CrossSum.of(Factorial.of(100)), is(valueOf(648)));
     }
 }

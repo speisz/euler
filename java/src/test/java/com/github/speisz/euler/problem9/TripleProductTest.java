@@ -1,7 +1,7 @@
 package com.github.speisz.euler.problem9;
 
 import org.apache.commons.lang3.tuple.Triple;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -9,17 +9,17 @@ import java.util.stream.Stream;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class TripleProductTest {
+class TripleProductTest {
 
     @Test
-    public void findsFirstTripleProduct() {
+    void findsFirstTripleProduct() {
         int product = new TripleProduct(() -> Stream.of(Triple.of(3, 4, 5))).computeFirst();
 
         assertThat(product, is(3 * 4 * 5));
     }
 
     @Test
-    public void findsPythagoreanTripleProductForGivenCondition() {
+    void findsPythagoreanTripleProductForGivenCondition() {
         Predicate<Triple<Integer, Integer, Integer>> condition = triple -> triple.getLeft() + triple.getMiddle() + triple.getRight() == 1000;
 
         int product = new TripleProduct(new PythagoreanTripleStream()).computeFirst(condition);

@@ -3,9 +3,6 @@ package com.github.speisz.euler.utils;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.LongConsumer;
 import java.util.function.LongPredicate;
-import java.util.function.LongConsumer;
-import java.util.function.LongPredicate;
-import java.util.stream.LongStream;
 import java.util.stream.LongStream;
 
 public class BoundedLongStream {

@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem1;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
@@ -10,15 +10,15 @@ import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 
-public class MultipleCalculatorTest {
+class MultipleCalculatorTest {
 
     @Test
-    public void givesEmptyIfThereIsNoPositiveMultipleNotGreaterThanSpecifiedBoundary() {
+    void givesEmptyIfThereIsNoPositiveMultipleNotGreaterThanSpecifiedBoundary() {
         assertThat(MultipleCalculator.forBase(3).computeUpTo(0), is(empty()));
     }
 
     @Test
-    public void givesBaseAsSingleMultipleIfItIsEqualToSpecifiedBoundary() {
+    void givesBaseAsSingleMultipleIfItIsEqualToSpecifiedBoundary() {
         Set<Integer> multiples = MultipleCalculator.forBase(3).computeUpTo(3);
 
         assertThat(multiples, hasSize(1));
@@ -26,7 +26,7 @@ public class MultipleCalculatorTest {
     }
 
     @Test
-    public void givesMultiplesUpToSpecifiedBoundary() {
+    void givesMultiplesUpToSpecifiedBoundary() {
         Set<Integer> multiples = MultipleCalculator.forBase(3).computeUpTo(20);
 
         assertThat(multiples, hasSize(6));

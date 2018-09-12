@@ -12,7 +12,7 @@ public final class LongUtil {
     public static ToLongFunction<Integer> identity() {
         return n -> n;
     }
-    
+
     public static LongPredicate containedIn(Long n) {
         return digit -> digits(n).anyMatch(digitOfN -> digitOfN == digit);
     }

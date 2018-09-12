@@ -1,7 +1,7 @@
 package com.github.speisz.euler.problem27;
 
 import com.github.speisz.euler.math.QuadraticForm;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.stream.Stream;
 
@@ -12,10 +12,10 @@ import static java.util.stream.IntStream.rangeClosed;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class Solution {
+class Solution {
 
     @Test
-    public void findsProductOfCoefficientsWithMaximumNumberOfConsecutivePrimes() {
+    void findsProductOfCoefficientsWithMaximumNumberOfConsecutivePrimes() {
         Stream<QuadraticForm> quadraticForms = pairStream(() -> rangeClosed(-999, 999).boxed())
                 .filter(coefficients -> isPrime(coefficients.getRight())) // optimization only
                 .map(QuadraticForm::withCoefficients);

@@ -1,6 +1,6 @@
 package com.github.speisz.euler.utils;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 
@@ -13,44 +13,44 @@ import static com.github.speisz.euler.utils.MathUtil.roundedSqrt;
 import static com.github.speisz.euler.utils.MathUtil.square;
 import static java.math.BigInteger.valueOf;
 import static java.util.stream.Collectors.toList;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class MathUtilsTest {
+class MathUtilsTest {
 
     @Test
-    public void testsThatIntegerIsNotPrime() {
+    void testsThatIntegerIsNotPrime() {
         assertThat(isPrime(1), is(false));
         assertThat(isPrime(4), is(false));
         assertThat(isPrime(20), is(false));
     }
 
     @Test
-    public void testsThatIntegerIsPrime() {
+    void testsThatIntegerIsPrime() {
         assertThat(isPrime(2), is(true));
         assertThat(isPrime(3), is(true));
         assertThat(isPrime(17), is(true));
     }
 
     @Test
-    public void testsThatBigIntegerIsNotPrime() {
+    void testsThatBigIntegerIsNotPrime() {
         assertThat(isPrime(valueOf(1)), is(false));
         assertThat(isPrime(valueOf(4)), is(false));
         assertThat(isPrime(valueOf(20)), is(false));
     }
 
     @Test
-    public void testsThatBigIntegerIsPrime() {
+    void testsThatBigIntegerIsPrime() {
         assertThat(isPrime(valueOf(2)), is(true));
         assertThat(isPrime(valueOf(3)), is(true));
         assertThat(isPrime(valueOf(17)), is(true));
     }
 
     @Test
-    public void computesRoundedSqrt() {
+    void computesRoundedSqrt() {
         assertThat(roundedSqrt(valueOf(1)), is(valueOf(1)));
         assertThat(roundedSqrt(valueOf(2)), is(valueOf(1)));
         assertThat(roundedSqrt(valueOf(3)), is(valueOf(2)));
@@ -62,7 +62,7 @@ public class MathUtilsTest {
     }
 
     @Test
-    public void computesPowersOfIntegers() {
+    void computesPowersOfIntegers() {
         assertThat(pow(1, 0), is(1L));
         assertThat(pow(1, 1), is(1L));
         assertThat(pow(2, 0), is(1L));
@@ -72,13 +72,13 @@ public class MathUtilsTest {
     }
 
     @Test
-    public void streamsDigits() {
+    void streamsDigits() {
         assertThat(digits(123).boxed().collect(toList()), contains(1, 2, 3));
         assertThat(digits(BigInteger.valueOf(123)).boxed().collect(toList()), contains(1, 2, 3));
     }
 
     @Test
-    public void testsIfNumberIsPerfectSquare() {
+    void testsIfNumberIsPerfectSquare() {
         assertTrue(isPerfectSquare(1));
         assertTrue(isPerfectSquare(4));
         assertTrue(isPerfectSquare(9));
@@ -92,7 +92,7 @@ public class MathUtilsTest {
     }
 
     @Test
-    public void truncsIntegerToLastNDigits() {
+    void truncsIntegerToLastNDigits() {
         assertThat(lastDigits(12345, 3), is(345L));
         assertThat(lastDigits(12345, 6), is(12345L));
         assertThat(lastDigits(12345, 0), is(0L));

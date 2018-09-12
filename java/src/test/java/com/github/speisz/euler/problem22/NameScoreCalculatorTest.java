@@ -1,7 +1,7 @@
 package com.github.speisz.euler.problem22;
 
 import com.github.speisz.euler.utils.WordValueCalculator;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 
@@ -11,12 +11,12 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class NameScoreCalculatorTest {
+class NameScoreCalculatorTest {
 
     private WordValueCalculator wordValueCalculator = mock(WordValueCalculator.class);
 
     @Test
-    public void calculatesScoresBasedOnPositionInSortedList() {
+    void calculatesScoresBasedOnPositionInSortedList() {
         NameScoreCalculator nameScoreCalculator = NameScoreCalculator.create(wordValueCalculator);
         when(wordValueCalculator.calculateFor("A")).thenReturn(7);
         when(wordValueCalculator.calculateFor("B")).thenReturn(11);

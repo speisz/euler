@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem31;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import static com.github.speisz.euler.problem31.CoinCombinationsFinder.CoinCombi
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 
-public class CoinCombinationsFinderTest {
+class CoinCombinationsFinderTest {
     @Test
-    public void findsCoinCombinationsForValue() {
+    void findsCoinCombinationsForValue() {
         List<CoinCombinationsFinder.CoinCombination> combinations = new CoinCombinationsFinder(5, 2, 1).findAllFor(10);
         assertThat(combinations, contains(
                 coinCombination(5, 5),

@@ -1,7 +1,7 @@
 package com.github.speisz.euler.problem26;
 
 import org.apache.commons.lang3.tuple.Pair;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
@@ -10,9 +10,9 @@ import static java.util.Comparator.comparing;
 import static java.util.stream.IntStream.range;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class Solution {
+class Solution {
     @Test
-    public void findsDenominatorWithLongestCycleInUnitFraction() {
+    void findsDenominatorWithLongestCycleInUnitFraction() {
         Optional<Integer> denominatorWithMaxCycleLength = range(1, 1000)
                 .boxed()
                 .map(d -> Pair.of(d, FractionCycleLengthFinder.findFor(d)))

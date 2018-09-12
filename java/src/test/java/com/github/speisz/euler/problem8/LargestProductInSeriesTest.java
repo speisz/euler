@@ -1,37 +1,37 @@
 package com.github.speisz.euler.problem8;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class LargestProductInSeriesTest {
+class LargestProductInSeriesTest {
     @Test
-    public void findsLargestProductOf1DigitInASeries() {
+    void findsLargestProductOf1DigitInASeries() {
         assertThat(new LargestProductInSeries("1984").ofDigits(1), is(9L));
         assertThat(new LargestProductInSeries("1777").ofDigits(1), is(7L));
     }
 
     @Test
-    public void findsLargestProductOf2DigitsInASeries() {
+    void findsLargestProductOf2DigitsInASeries() {
         assertThat(new LargestProductInSeries("1984").ofDigits(2), is(9 * 8L));
         assertThat(new LargestProductInSeries("1777").ofDigits(2), is(7 * 7L));
     }
 
     @Test
-    public void findsLargestProductOf3DigitsInASeries() {
+    void findsLargestProductOf3DigitsInASeries() {
         assertThat(new LargestProductInSeries("1984").ofDigits(3), is(9 * 8 * 4L));
         assertThat(new LargestProductInSeries("1777").ofDigits(3), is(7 * 7 * 7L));
     }
 
     @Test
-    public void findsLargestProductOf4DigitsInASeries() {
+    void findsLargestProductOf4DigitsInASeries() {
         assertThat(new LargestProductInSeries("1984").ofDigits(4), is(9 * 8 * 4L));
         assertThat(new LargestProductInSeries("2777").ofDigits(4), is(2 * 7 * 7 * 7L));
     }
 
     @Test
-    public void findsLargestProductInALongSeries() {
+    void findsLargestProductInALongSeries() {
         assertThat(new LargestProductInSeries(
                 "73167176531330624919225119674426574742355349194934" +
                         "96983520312774506326239578318016984801869478851843" +

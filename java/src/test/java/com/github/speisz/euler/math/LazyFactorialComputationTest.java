@@ -1,18 +1,18 @@
 package com.github.speisz.euler.math;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
-public class LazyFactorialComputationTest {
+class LazyFactorialComputationTest {
 
     private LazyFactorialComputation lazyFactorialComputation = new LazyFactorialComputation();
 
     @Test
-    public void computesFactorials() {
+    void computesFactorials() {
         assertFactorial(0, 1);
         assertFactorial(1, 1);
         assertFactorial(2, 2);

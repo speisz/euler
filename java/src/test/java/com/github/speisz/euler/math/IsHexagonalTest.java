@@ -1,34 +1,34 @@
 package com.github.speisz.euler.math;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.function.LongPredicate;
 import java.util.stream.LongStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class IsHexagonalTest {
+class IsHexagonalTest {
 
     private static final IsHexagonal IS_HEXAGONAL = IsHexagonal.create();
     private static final LongPredicate IS_HEXAGONAL_LONG = IS_HEXAGONAL.toLongPredicate();
 
     @Test
-    public void testsThatNumberIsHexagonal() {
+    void testsThatNumberIsHexagonal() {
         LongStream.of(1L, 6L, 15L, 28L, 45L, 40_755L)
                 .forEach(pentagonal -> assertTrue(IS_HEXAGONAL.test(pentagonal)));
     }
 
     @Test
-    public void testsThatNumberIsNotHexagonal() {
+    void testsThatNumberIsNotHexagonal() {
         LongStream.of(0L, 2L, 3L, 4L, 5L, 7L, 40_756L)
                 .forEach(nonHexagonal -> assertFalse(IS_HEXAGONAL.test(nonHexagonal)));
     }
 
     @Test
-    public void isEfficient() {
+    void isEfficient() {
         assertThat(LongStream.range(0, 10_000_000)
                 .filter(IS_HEXAGONAL_LONG)
                 .count(), is(2236L));

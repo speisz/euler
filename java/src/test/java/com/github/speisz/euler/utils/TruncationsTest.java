@@ -1,6 +1,6 @@
 package com.github.speisz.euler.utils;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static java.util.stream.Collectors.toList;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -8,10 +8,10 @@ import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
 
-public class TruncationsTest {
+class TruncationsTest {
 
     @Test
-    public void streamsAllTruncationsOfGivenString() {
+    void streamsAllTruncationsOfGivenString() {
         assertThat(Truncations.stream("").collect(toList()), is(empty()));
         assertThat(Truncations.stream("a").collect(toList()), is(empty()));
         assertThat(Truncations.stream("ab").collect(toList()), contains("b", "a"));
@@ -19,14 +19,14 @@ public class TruncationsTest {
     }
 
     @Test
-    public void streamsAllTruncationsOfGivenLong() {
+    void streamsAllTruncationsOfGivenLong() {
         assertThat(Truncations.stream(1L).collect(toList()), is(empty()));
         assertThat(Truncations.stream(12L).collect(toList()), contains(2L, 1L));
         assertThat(Truncations.stream(123L).collect(toList()), contains(23L, 3L, 12L, 1L));
     }
 
     @Test
-    public void streamsAllTruncationsOfGivenInteger() {
+    void streamsAllTruncationsOfGivenInteger() {
         assertThat(Truncations.stream(1).collect(toList()), is(empty()));
         assertThat(Truncations.stream(12).collect(toList()), contains(2, 1));
         assertThat(Truncations.stream(123).collect(toList()), contains(23, 3, 12, 1));

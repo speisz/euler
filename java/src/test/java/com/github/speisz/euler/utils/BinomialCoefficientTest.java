@@ -1,14 +1,14 @@
 package com.github.speisz.euler.utils;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static java.math.BigInteger.valueOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class BinomialCoefficientTest {
+class BinomialCoefficientTest {
     @Test
-    public void computesBinomialCoefficients() {
+    void computesBinomialCoefficients() {
         assertThat(BinomialCoefficient.of(1, 1), is(valueOf(1)));
         assertThat(BinomialCoefficient.of(2, 1), is(valueOf(2)));
         assertThat(BinomialCoefficient.of(3, 1), is(valueOf(3)));

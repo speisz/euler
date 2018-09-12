@@ -1,42 +1,29 @@
 package com.github.speisz.euler.math;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import java.util.stream.IntStream;
 
-public class SieveOfEratosthenesTest {
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-//    public ExpectedException exception = ExpectedException.none();
-    
+class SieveOfEratosthenesTest {
+
     @Test
-    public void testsIfNumberIsPrime() {
-        SieveOfEratosthenes sieveOfEratosthenes = new SieveOfEratosthenes(10);
+    void testsIfNumberIsPrime() {
+        SieveOfEratosthenes sieve = new SieveOfEratosthenes(10);
 
-        assertTrue(sieveOfEratosthenes.test(2));
-        assertTrue(sieveOfEratosthenes.test(3));
-        assertTrue(sieveOfEratosthenes.test(5));
-        assertTrue(sieveOfEratosthenes.test(7));
-
-        assertFalse(sieveOfEratosthenes.test(4));
-        assertFalse(sieveOfEratosthenes.test(6));
-        assertFalse(sieveOfEratosthenes.test(8));
-        assertFalse(sieveOfEratosthenes.test(9));
-        assertFalse(sieveOfEratosthenes.test(10));
-        
-        assertFalse(sieveOfEratosthenes.test(1));
-        assertFalse(sieveOfEratosthenes.test(0));
-        assertFalse(sieveOfEratosthenes.test(-1));
-        assertFalse(sieveOfEratosthenes.test(-3));
+        IntStream.of(2, 3, 5, 7).forEach(n -> assertTrue(sieve.test(n), n + " is prime."));
+        IntStream.of(4, 6, 9, 10, 1, 0, -1, -3).forEach(n -> assertFalse(sieve.test(n), n + " is not prime."));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void throwsExceptionIfNumberToTestIsOutOfRange() {
-        SieveOfEratosthenes sieveOfEratosthenes = new SieveOfEratosthenes(10);
-
-//        exception.expect(IllegalArgumentException.class);
-//        exception.expectMessage("11");
-
-        sieveOfEratosthenes.test(11);
+    @Test
+    void throwsExceptionIfNumberToTestIsOutOfRange() {
+        SieveOfEratosthenes sieve = new SieveOfEratosthenes(10);
+        Exception thrownException = assertThrows(IllegalArgumentException.class, () -> sieve.test(11));
+        assertThat(thrownException.getMessage(), containsString("11"));
     }
 }

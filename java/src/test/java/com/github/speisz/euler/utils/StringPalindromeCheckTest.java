@@ -1,26 +1,26 @@
 package com.github.speisz.euler.utils;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class StringPalindromeCheckTest {
+class StringPalindromeCheckTest {
 
     private StringPalindromeCheck stringPalindromeCheck = StringPalindromeCheck.create();
 
     @Test
-    public void statesSingleCharacterStringsAsPalindromes() {
+    void statesSingleCharacterStringsAsPalindromes() {
         assertTrue(stringPalindromeCheck.test("a"));
     }
 
     @Test
-    public void statesNonPalindromesCorrectly() {
+    void statesNonPalindromesCorrectly() {
         assertFalse(stringPalindromeCheck.test("ab"));
     }
 
     @Test
-    public void statesPalindromesCorrectly() {
+    void statesPalindromesCorrectly() {
         assertTrue(stringPalindromeCheck.test("aba"));
         assertTrue(stringPalindromeCheck.test("911acca119"));
     }

@@ -1,15 +1,15 @@
 package com.github.speisz.euler.problem18;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 
-public class TriangleTest {
+class TriangleTest {
 
     @Test
-    public void parsesATriangle() {
+    void parsesATriangle() {
         Triangle triangle = new Triangle("" +
                 "3\n" +
                 "7 4\n" +
@@ -24,7 +24,7 @@ public class TriangleTest {
     }
 
     @Test
-    public void calculatesMaximumPathSum() {
+    void calculatesMaximumPathSum() {
         Triangle triangle = new Triangle("" +
                 "3\n" +
                 "7 4\n" +

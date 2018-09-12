@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem5;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 import java.util.stream.Stream;
@@ -10,32 +10,32 @@ import static java.util.stream.IntStream.rangeClosed;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class MinNumberTest {
+class MinNumberTest {
 
     private MinNumber minNumber = new MinNumber();
 
     @Test
-    public void findsMinNumberDivisibleByOneNumber() {
+    void findsMinNumberDivisibleByOneNumber() {
         assertThat(computeMinimal(1), is(valueOf(1)));
         assertThat(computeMinimal(2), is(valueOf(2)));
         assertThat(computeMinimal(10), is(valueOf(10)));
     }
 
     @Test
-    public void findsMinNumberDivisibleByTeilerfremd() {
+    void findsMinNumberDivisibleByTeilerfremd() {
         assertThat(computeMinimal(2, 3), is(valueOf(6)));
         assertThat(computeMinimal(11, 17), is(valueOf(187)));
         assertThat(computeMinimal(6, 35), is(valueOf(210)));
     }
 
     @Test
-    public void findsMinNumberDivisibleByNotTeilerfremd() {
+    void findsMinNumberDivisibleByNotTeilerfremd() {
         assertThat(computeMinimal(2, 3, 6), is(valueOf(6)));
         assertThat(computeMinimal(1, 2, 3, 4, 5, 15), is(valueOf(60)));
     }
 
     @Test
-    public void findsMinNumberDivisibleForManyNumbers() {
+    void findsMinNumberDivisibleForManyNumbers() {
         assertThat(computeMinimal(rangeUpTo(10)), is(valueOf(2520)));
         assertThat(computeMinimal(rangeUpTo(20)), is(valueOf(232792560)));
         assertThat(computeMinimal(rangeUpTo(50)), is(new BigInteger("3099044504245996706400")));

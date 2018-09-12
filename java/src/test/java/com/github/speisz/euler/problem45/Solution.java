@@ -2,7 +2,7 @@ package com.github.speisz.euler.problem45;
 
 import com.github.speisz.euler.math.IsHexagonal;
 import com.github.speisz.euler.math.IsPentagonal;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.OptionalLong;
 import java.util.function.LongPredicate;
@@ -11,13 +11,13 @@ import java.util.stream.LongStream;
 import static com.github.speisz.euler.testutils.matcher.optionallong.HasValueMatcher.hasValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class Solution {
+class Solution {
 
     private static final LongPredicate IS_PENTAGONAL = IsPentagonal.create().toLongPredicate();
     private static final LongPredicate IS_HEXAGONAL = IsHexagonal.create().toLongPredicate();
 
     @Test
-    public void findsSecondNumberThatIsTrianglePentagonalAndHexagonal() {
+    void findsSecondNumberThatIsTrianglePentagonalAndHexagonal() {
         OptionalLong trianglePentagonalHexagonal = LongStream.iterate(286, n -> n + 1)
                 .map(this::nthTriangle)
                 .filter(IS_PENTAGONAL)

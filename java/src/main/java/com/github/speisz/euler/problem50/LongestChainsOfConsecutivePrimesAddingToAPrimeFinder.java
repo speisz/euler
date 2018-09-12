@@ -30,7 +30,7 @@ class LongestChainsOfConsecutivePrimesAddingToAPrimeFinder {
 
     PrimeChain find(int lengthOfLongestChainKnownInAdvance) {
         return iterate(2, i -> i < upper / lengthOfLongestChainKnownInAdvance, i -> i + 1)
-                .filter(primeSieve)
+                .filter(primeSieve::test)
                 .boxed()
                 .flatMap(initial -> findAllPrimeChainsStartingWith(initial, upper))
                 .max(comparing(PrimeChain::getLength)).orElseThrow();
@@ -40,8 +40,8 @@ class LongestChainsOfConsecutivePrimesAddingToAPrimeFinder {
         AtomicInteger sum = new AtomicInteger(0);
         AtomicInteger length = new AtomicInteger(0);
         return iterate(initial, i -> i + 1)
-                .filter(primeSieve)
                 .takeWhile(p -> sum.get() + p < upperBoundForSum)
+                .filter(primeSieve::test)
                 .peek(p -> length.addAndGet(1))
                 .filter(p -> primeSieve.test(sum.addAndGet(p)))
                 .mapToObj(p -> PrimeChain.of(sum.get(), length.get(), initial));

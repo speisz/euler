@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem14;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 import java.util.function.Predicate;
@@ -12,9 +12,9 @@ import static java.util.stream.Collectors.toList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 
-public class SequenceTest {
+class SequenceTest {
     @Test
-    public void generatesSimpleSequenceWithBreakCondition() {
+    void generatesSimpleSequenceWithBreakCondition() {
         assertThat(Sequence.<BigInteger>builder()
                 .withSeed(ONE)
                 .withRule(ONE::add)

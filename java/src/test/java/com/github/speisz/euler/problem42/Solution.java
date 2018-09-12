@@ -1,17 +1,17 @@
 package com.github.speisz.euler.problem42;
 
 import com.github.speisz.euler.utils.AlphabeticalValueCalculator;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.stream.Stream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class Solution {
+class Solution {
 
     @Test
-    public void countsTriangleWords() {
+    void countsTriangleWords() {
         assertThat(WORDS.map(AlphabeticalValueCalculator.create())
                 .filter(IsTriangleNumber.create())
                 .count(), is(162L));

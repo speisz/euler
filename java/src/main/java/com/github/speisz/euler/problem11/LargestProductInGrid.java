@@ -13,7 +13,7 @@ import static java.util.Arrays.deepToString;
 public class LargestProductInGrid {
     private int[][] grid;
 
-    public LargestProductInGrid(int[][] grid) {
+    LargestProductInGrid(int[][] grid) {
         this.grid = grid;
     }
 
@@ -25,6 +25,7 @@ public class LargestProductInGrid {
                 .orElseThrow(() -> new RuntimeException(format("Could not compute maximal product of %s", deepToString(grid))));
     }
 
+    @SafeVarargs
     private Collection<int[]> union(Collection<int[]>... collections) {
         List<int[]> union = new ArrayList<>();
         Stream.of(collections).forEach(union::addAll);

@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem13;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 
@@ -8,10 +8,10 @@ import static java.math.BigInteger.valueOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class SumCalculatorTest {
+class SumCalculatorTest {
 
     @Test
-    public void computesSmallSums() {
+    void computesSmallSums() {
         assertThat(SumCalculator.ofSummands(valueOf(1), valueOf(2)).getSum(), is(valueOf(3)));
         assertThat(SumCalculator.ofSummands(valueOf(-1), valueOf(2)).getSum(), is(valueOf(1)));
         assertThat(SumCalculator.ofSummands(valueOf(1), valueOf(-2)).getSum(), is(valueOf(-1)));
@@ -19,12 +19,12 @@ public class SumCalculatorTest {
     }
 
     @Test
-    public void computesFistDigitsOfSums() {
+    void computesFistDigitsOfSums() {
         assertThat(SumCalculator.ofSummands(valueOf(5), valueOf(6)).getFirstDigitsOfSum(1), is(valueOf(1)));
     }
 
     @Test
-    public void computeSumOf50DigitNumbers() {
+    void computeSumOf50DigitNumbers() {
         assertThat(SumCalculator.ofSummands(
                 bigInteger("37107287533902102798797998220837590246510135740250"),
                 bigInteger("46376937677490009712648124896970078050417018260538"),

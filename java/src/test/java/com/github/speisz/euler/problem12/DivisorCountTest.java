@@ -1,14 +1,14 @@
 package com.github.speisz.euler.problem12;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static java.math.BigInteger.valueOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class DivisorCountTest {
+class DivisorCountTest {
     @Test
-    public void countsNumberOfDivisors() {
+    void countsNumberOfDivisors() {
         assertThat(DivisorCount.of(valueOf(1)), is(1));
         assertThat(DivisorCount.of(valueOf(2)), is(2));
         assertThat(DivisorCount.of(valueOf(3)), is(2));

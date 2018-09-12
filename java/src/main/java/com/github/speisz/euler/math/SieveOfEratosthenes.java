@@ -1,8 +1,6 @@
 package com.github.speisz.euler.math;
 
 import java.util.BitSet;
-import java.util.function.IntPredicate;
-import java.util.function.LongPredicate;
 import java.util.function.Predicate;
 
 import static java.lang.Math.floor;
@@ -13,7 +11,7 @@ public class SieveOfEratosthenes implements Predicate<Integer>, ToIntPredicate {
 
     private final int upperBound;
     private final BitSet isNotPrime;
-    
+
     public SieveOfEratosthenes(int upperBound) {
         this.upperBound = upperBound;
         isNotPrime = new BitSet(upperBound + 1);

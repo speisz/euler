@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem23;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
@@ -10,13 +10,13 @@ import static java.util.stream.IntStream.rangeClosed;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class Solution {
+class Solution {
 
     private static final int SMALLEST_ABUNDANT_NUMBER = 12;
     private static final int UPPER_BORDER_FOR_ABUNDANT_NUMBERS = 28_123;
 
     @Test
-    public void computesSumOfNonAbundantSumNumbers() {
+    void computesSumOfNonAbundantSumNumbers() {
         Set<Integer> abundantNumbers = rangeClosed(SMALLEST_ABUNDANT_NUMBER, UPPER_BORDER_FOR_ABUNDANT_NUMBERS)
                 .filter(isAbundantNumber())
                 .boxed()
@@ -30,7 +30,7 @@ public class Solution {
         int sumOfNonAbundantSumNumbers = rangeClosed(1, UPPER_BORDER_FOR_ABUNDANT_NUMBERS)
                 .filter(i -> !abundantNumberSums.contains(i))
                 .sum();
-        
+
         assertThat(sumOfNonAbundantSumNumbers, is(4_179_871));
     }
 }

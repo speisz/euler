@@ -14,7 +14,6 @@ import static java.lang.Math.sqrt;
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.ZERO;
 import static java.math.BigInteger.valueOf;
-import static java.util.stream.IntStream.generate;
 import static java.util.stream.Stream.iterate;
 
 public abstract class MathUtil {

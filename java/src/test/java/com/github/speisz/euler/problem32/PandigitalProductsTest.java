@@ -1,13 +1,13 @@
 package com.github.speisz.euler.problem32;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PandigitalProductsTest {
+class PandigitalProductsTest {
 
     @Test
-    public void findsAllPandigitalProducts() {
+    void findsAllPandigitalProducts() {
         assertTrue(PandigitalProducts.stream().anyMatch(n -> n == 7254));
     }
 }

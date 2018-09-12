@@ -2,7 +2,7 @@ package com.github.speisz.euler.problem49;
 
 import com.github.speisz.euler.math.SieveOfEratosthenes;
 import com.github.speisz.euler.utils.LexicographicPermutations;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.function.IntPredicate;
@@ -13,14 +13,14 @@ import static java.util.stream.IntStream.rangeClosed;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class Solution {
+class Solution {
 
     private static final SieveOfEratosthenes PRIME_SIEVE = new SieveOfEratosthenes(10_000);
     private static final IntPredicate INT_PRIME_SIEVE = PRIME_SIEVE.toIntPredicate();
     private static final int ALREADY_KNOWN = 1_487;
 
     @Test
-    public void findsPrimePermutationsOfLengthThreeForFourDigitNumbers() {
+    void findsPrimePermutationsOfLengthThreeForFourDigitNumbers() {
         String concatenation = rangeClosed(1_000, 9_999)
                 .filter(INT_PRIME_SIEVE)
                 .filter(n -> n != ALREADY_KNOWN)

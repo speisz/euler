@@ -1,39 +1,35 @@
 package com.github.speisz.euler.testutils.matcher.optional;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.util.Optional;
 
 import static com.github.speisz.euler.testutils.matcher.optional.PresentMatcher.present;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class PresentMatcherTest {
-
-    @Rule
-    public ExpectedException exception = ExpectedException.none();
+class PresentMatcherTest {
 
     @Test
-    public void checksIfOptionalIsPresent() {
+    void checksIfOptionalIsPresent() {
         assertThat(Optional.of("present"), is(present()));
     }
 
     @Test
-    public void hasAppropriateAssertionErrorMessageIfPresentThoughExpectedNotPresent() {
-        exception.expect(AssertionError.class);
-        exception.expectMessage("not a non-empty optional");
-
-        assertThat(Optional.of("present"), is(not(present())));
+    void hasAppropriateAssertionErrorMessageIfPresentThoughExpectedNotPresent() {
+        Executable falseAssertion = () -> assertThat(Optional.of("present"), is(not(present())));
+        AssertionError thrownException = assertThrows(AssertionError.class, falseAssertion);
+        assertThat(thrownException.getMessage(), containsString("not a non-empty optional"));
     }
 
     @Test
-    public void hasAppropriateAssertionErrorMessageIfNotPresentThoughExpectedPresent() {
-        exception.expect(AssertionError.class);
-        exception.expectMessage("an empty optional");
-
-        assertThat(Optional.empty(), is(present()));
+    void hasAppropriateAssertionErrorMessageIfNotPresentThoughExpectedPresent() {
+        Executable falseAssertion = () -> assertThat(Optional.empty(), is(present()));
+        AssertionError thrownException = assertThrows(AssertionError.class, falseAssertion);
+        assertThat(thrownException.getMessage(), containsString("an empty optional"));
     }
 }

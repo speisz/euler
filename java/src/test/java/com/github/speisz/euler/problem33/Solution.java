@@ -1,7 +1,7 @@
 package com.github.speisz.euler.problem33;
 
 import org.apache.commons.lang3.math.Fraction;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import static org.apache.commons.lang3.math.Fraction.getFraction;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class Solution {
+class Solution {
 
     @Test
-    public void findAllValidDirtyCancellationsOfTwoDigitNumeratorAndDenominator() {
+    void findAllValidDirtyCancellationsOfTwoDigitNumeratorAndDenominator() {
         List<Fraction> fractions = pairStream(() -> range(11, 99).boxed())
                 .map(pair -> getFraction(pair.getLeft(), pair.getRight()))
                 .filter(fraction -> fraction.getDenominator() % 10 != 0)
@@ -23,7 +23,7 @@ public class Solution {
                 .filter(fraction -> fraction.compareTo(Fraction.ONE) < 0)
                 .collect(toList());
 
-        assertThat(fractions.stream().reduce(Fraction.ONE,Fraction::multiplyBy).reduce().getDenominator(), is(100));
+        assertThat(fractions.stream().reduce(Fraction.ONE, Fraction::multiplyBy).reduce().getDenominator(), is(100));
     }
 
     private boolean dirtyCancellationGivesCorrectCancellation(Fraction fraction) {

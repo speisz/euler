@@ -1,14 +1,14 @@
 package com.github.speisz.euler.problem67;
 
 import com.github.speisz.euler.problem18.Triangle;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class Solution {
+class Solution {
     @Test
-    public void calculatesMaximumPathSumForHugeTriangle() {
+    void calculatesMaximumPathSumForHugeTriangle() {
         Triangle triangle = new Triangle("" +
                 "59\n" +
                 "73 41\n" +

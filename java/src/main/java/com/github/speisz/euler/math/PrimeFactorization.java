@@ -1,7 +1,5 @@
 package com.github.speisz.euler.math;
 
-import com.github.speisz.euler.utils.MathUtil;
-
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;

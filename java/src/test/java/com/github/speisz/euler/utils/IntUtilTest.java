@@ -1,14 +1,14 @@
 package com.github.speisz.euler.utils;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class IntUtilTest {
+class IntUtilTest {
 
     @Test
-    public void concatsIntegers() {
-        assertThat(IntUtil.concat(1,23), is(123));
+    void concatsIntegers() {
+        assertThat(IntUtil.concat(1, 23), is(123));
     }
 }

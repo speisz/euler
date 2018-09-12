@@ -1,40 +1,34 @@
 package com.github.speisz.euler.testutils.matcher.optionallong;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
 import java.util.OptionalLong;
 
 import static com.github.speisz.euler.testutils.matcher.optionallong.PresentMatcher.present;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class PresentMatcherTest {
-
-    @Rule
-    public ExpectedException exception = ExpectedException.none();
+class PresentMatcherTest {
 
     @Test
-    public void checksIfOptionalIsPresent() {
+    void checksIfOptionalIsPresent() {
         assertThat(OptionalLong.of(1L), is(present()));
     }
 
     @Test
-    public void hasAppropriateAssertionErrorMessageIfPresentThoughExpectedNotPresent() {
-        exception.expect(AssertionError.class);
-        exception.expectMessage("not a non-empty optional");
+    void hasAppropriateAssertionErrorMessageIfPresentThoughExpectedNotPresent() {
+        AssertionError thrownException = assertThrows(AssertionError.class, () -> assertThat(OptionalLong.of(1L), is(not(present()))));
 
-        assertThat(OptionalLong.of(1L), is(not(present())));
+        assertThat(thrownException.getMessage(), containsString("not a non-empty optional"));
     }
 
     @Test
-    public void hasAppropriateAssertionErrorMessageIfNotPresentThoughExpectedPresent() {
-        exception.expect(AssertionError.class);
-        exception.expectMessage("an empty optional");
+    void hasAppropriateAssertionErrorMessageIfNotPresentThoughExpectedPresent() {
+        AssertionError thrownException = assertThrows(AssertionError.class, () -> assertThat(OptionalLong.empty(), is(present())));
 
-        assertThat(OptionalLong.empty(), is(present()));
+        assertThat(thrownException.getMessage(), containsString("an empty optional"));
     }
 }

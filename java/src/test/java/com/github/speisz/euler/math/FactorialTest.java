@@ -1,15 +1,15 @@
 package com.github.speisz.euler.math;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
-public class FactorialTest {
+class FactorialTest {
     @Test
-    public void computesFactorials() {
+    void computesFactorials() {
         assertThat(Factorial.of(0), is(BigInteger.ONE));
         assertThat(Factorial.of(1), is(BigInteger.ONE));
         assertThat(Factorial.of(2), is(BigInteger.valueOf(2)));

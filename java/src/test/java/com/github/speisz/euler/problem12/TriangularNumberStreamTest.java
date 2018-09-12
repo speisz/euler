@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem12;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -12,10 +12,10 @@ import static java.util.stream.Collectors.toList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class TriangularNumberStreamTest {
+class TriangularNumberStreamTest {
 
     @Test
-    public void suppliesTriangularNumbers() {
+    void suppliesTriangularNumbers() {
         assertThat(firstNTriangularNumbers(1), is(singletonList(valueOf(1))));
         assertThat(firstNTriangularNumbers(2), is(asList(valueOf(1), valueOf(3))));
         assertThat(firstNTriangularNumbers(3), is(asList(valueOf(1), valueOf(3), valueOf(6))));

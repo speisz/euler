@@ -1,14 +1,14 @@
 package com.github.speisz.euler.problem40;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class DigitInChampernownesConstantTest {
+class DigitInChampernownesConstantTest {
 
     @Test
-    public void findsDigitInChampernownesConstant() {
+    void findsDigitInChampernownesConstant() {
         assertThat(DigitInChampernownesConstant.find(1), is(1));
         assertThat(DigitInChampernownesConstant.find(5), is(5));
         assertThat(DigitInChampernownesConstant.find(10), is(1));

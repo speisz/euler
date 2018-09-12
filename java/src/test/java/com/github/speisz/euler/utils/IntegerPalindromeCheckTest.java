@@ -1,22 +1,22 @@
 package com.github.speisz.euler.utils;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class IntegerPalindromeCheckTest {
+class IntegerPalindromeCheckTest {
 
     private IntegerPalindromeCheck palindromeCheck = IntegerPalindromeCheck.create();
 
     @Test
-    public void statesNonPalindromesCorrectly() {
+    void statesNonPalindromesCorrectly() {
         assertFalse(palindromeCheck.test(12));
         assertFalse(palindromeCheck.test(1234312));
     }
 
     @Test
-    public void statesPalindromesCorrectly() {
+    void statesPalindromesCorrectly() {
         assertTrue(palindromeCheck.test(1));
         assertTrue(palindromeCheck.test(1234321));
     }

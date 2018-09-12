@@ -1,7 +1,7 @@
 package com.github.speisz.euler.problem4;
 
 import org.apache.commons.lang3.tuple.Pair;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -16,17 +16,17 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.hasSize;
 
-public class CartesianProductTest {
+class CartesianProductTest {
 
     @Test
-    public void buildsCartesianForTwoOneElementCollections() {
+    void buildsCartesianForTwoOneElementCollections() {
         List<Pair<String, String>> product = computeFor(singletonList("a"), singletonList("b"));
         assertThat(product, hasSize(1));
         assertThat(product, hasItem(Pair.of("a", "b")));
     }
 
     @Test
-    public void buildsCartesianForTwoArbitraryCollections() {
+    void buildsCartesianForTwoArbitraryCollections() {
         List<Pair<String, String>> product = computeFor(asList("a", "b"), asList("a", "d", "e"));
         assertThat(product, hasSize(6));
         assertThat(product, hasItems(
@@ -40,7 +40,7 @@ public class CartesianProductTest {
     }
 
     @Test
-    public void buildsCartesianStreamForTwoArbitraryStreams() {
+    void buildsCartesianStreamForTwoArbitraryStreams() {
         List<Pair<String, String>> product = computeForStreams(() -> Stream.of("a", "b"), () -> Stream.of("a", "d", "e")).collect(toList());
         assertThat(product, hasSize(6));
         assertThat(product, hasItems(

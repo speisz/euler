@@ -7,7 +7,6 @@ import java.util.stream.Stream;
 import static com.github.speisz.euler.utils.MathUtil.TWO;
 import static com.github.speisz.euler.utils.MathUtil.isEven;
 import static java.math.BigInteger.ONE;
-import static java.math.BigInteger.TEN;
 import static java.math.BigInteger.valueOf;
 
 public class CollatzChain {

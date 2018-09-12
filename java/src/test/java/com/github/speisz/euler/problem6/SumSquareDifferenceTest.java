@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem6;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 import java.util.stream.Stream;
@@ -10,9 +10,9 @@ import static java.util.stream.IntStream.rangeClosed;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class SumSquareDifferenceTest {
+class SumSquareDifferenceTest {
     @Test
-    public void computesTheDifferenceOfSumSquareAndSquaresSum() {
+    void computesTheDifferenceOfSumSquareAndSquaresSum() {
         assertThat(SumSquareDifference.computeFor(() -> numbersUpTo(10)), is(valueOf(2640)));
         assertThat(SumSquareDifference.computeFor(() -> numbersUpTo(100)), is(valueOf(25164150)));
         assertThat(SumSquareDifference.computeFor(() -> numbersUpTo(10000000)), is(new BigInteger("2500000166666641666665000000")));

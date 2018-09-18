@@ -28,7 +28,7 @@ class StreamSumTest {
 
     @Test
     void sumsAllPrimesForHighUpperBound() {
-        SieveOfEratosthenes primeSieve = new SieveOfEratosthenes(2_000_000);
+        SieveOfEratosthenes primeSieve = SieveOfEratosthenes.createForUpperBound(2_000_000);
         assertThat(streamSum.get(2_000_000, primeSieve.toIntPredicate()), is(142913828922L));
     }
 }

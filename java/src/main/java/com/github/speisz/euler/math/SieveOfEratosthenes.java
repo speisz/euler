@@ -12,10 +12,14 @@ public class SieveOfEratosthenes implements Predicate<Integer>, ToIntPredicate {
     private final int upperBound;
     private final BitSet isNotPrime;
 
-    public SieveOfEratosthenes(int upperBound) {
+    private SieveOfEratosthenes(int upperBound) {
         this.upperBound = upperBound;
         isNotPrime = new BitSet(upperBound + 1);
         filterOutNonPrimes();
+    }
+
+    public static SieveOfEratosthenes createForUpperBound(int upperBound) {
+        return new SieveOfEratosthenes(upperBound);
     }
 
     private void filterOutNonPrimes() {

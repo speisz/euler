@@ -9,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 class Solution {
 
-    private static final SieveOfEratosthenes PRIME_SIEVE = new SieveOfEratosthenes(7_654_321);
+    private static final SieveOfEratosthenes PRIME_SIEVE = SieveOfEratosthenes.createForUpperBound(7_654_321);
 
     @Test
     void findsLargestPandigitalPrime() {

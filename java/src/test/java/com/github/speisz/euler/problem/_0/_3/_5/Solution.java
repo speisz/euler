@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.is;
 class Solution {
 
     private static final int UPPER_BOUND = 1_000_000;
-    private final SieveOfEratosthenes PRIME_SIEVE = new SieveOfEratosthenes(UPPER_BOUND);
+    private final SieveOfEratosthenes PRIME_SIEVE = SieveOfEratosthenes.createForUpperBound(UPPER_BOUND);
 
     @Test
     void countsCircularPrimes() {

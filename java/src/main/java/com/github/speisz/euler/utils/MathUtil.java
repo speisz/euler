@@ -9,7 +9,6 @@ import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 import static com.github.speisz.euler.utils.StreamUtil.lastElement;
-import static java.lang.Math.floor;
 import static java.lang.Math.sqrt;
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.ZERO;
@@ -107,7 +106,7 @@ public abstract class MathUtil {
     }
 
     private static int flooredSqrt(double n) {
-        return (int) floor(sqrt(n));
+        return (int) Math.floor(sqrt(n));
     }
 
     public static long pow(long base, int exponent) {
@@ -153,5 +152,33 @@ public abstract class MathUtil {
 
     public static long lastDigits(long n, int digitCount) {
         return n % pow(10L, digitCount);
+    }
+
+    public static int floor(int n, int index) {
+        int k = (int) base10Pow(index);
+        return k * (n / k);
+    }
+
+    public static long base10Pow(int exponent) {
+        return pow(10, exponent);
+    }
+
+    public static int replace(int number, int replacementDigit, int replacementIndex) {
+        if (replacementIndex < 0 || floor(number, replacementIndex) == 0) {
+            throw new IllegalArgumentException();
+        }
+        int base10Pow = (int) base10Pow(replacementIndex);
+
+        int left = floor(number, replacementIndex + 1);
+        int replaced = replacementDigit * base10Pow;
+        int right = number % base10Pow;
+        return left + replaced + right;
+    }
+
+    public static int upperBase10Pow(int n) {
+        return IntStream.iterate(0, i -> i + 1)
+                .map(i -> (int) base10Pow(i))
+                .filter(base10Pow -> base10Pow >= n)
+                .findFirst().orElseThrow();
     }
 }

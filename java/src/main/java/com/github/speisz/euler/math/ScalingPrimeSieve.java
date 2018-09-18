@@ -9,7 +9,7 @@ public class ScalingPrimeSieve implements Predicate<Integer>, ToIntPredicate {
     private int upperBound;
     private Predicate<Integer> sieve;
 
-    public ScalingPrimeSieve(int initialUpperBound, int upperBoundMultiplier, Function<Integer, Predicate<Integer>> sieveSupplier) {
+    private ScalingPrimeSieve(int initialUpperBound, int upperBoundMultiplier, Function<Integer, Predicate<Integer>> sieveSupplier) {
         this.upperBoundMultiplier = upperBoundMultiplier;
         this.sieveSupplier = sieveSupplier;
         this.upperBound = initialUpperBound;
@@ -17,7 +17,7 @@ public class ScalingPrimeSieve implements Predicate<Integer>, ToIntPredicate {
     }
 
     public ScalingPrimeSieve(int initialUpperBound, int upperBoundMultiplier) {
-        this(initialUpperBound, upperBoundMultiplier, SieveOfEratosthenes::new);
+        this(initialUpperBound, upperBoundMultiplier, SieveOfEratosthenes::createForUpperBound);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class ScalingPrimeSieve implements Predicate<Integer>, ToIntPredicate {
         }
     }
 
-    public int getUpperBound() {
+    int getUpperBound() {
         return upperBound;
     }
 }

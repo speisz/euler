@@ -155,19 +155,29 @@ public abstract class MathUtil {
     }
 
     public static int floor(int n, int index) {
-        int k = (int) base10Pow(index);
+        int k = intBase10Pow(index);
         return k * (n / k);
     }
 
     public static long base10Pow(int exponent) {
+        if (exponent < 0 || exponent > 18) {
+            throw new IllegalArgumentException("Exponent has to be in range [0,18] to fit in type 'long'. Got: " + exponent);
+        }
         return pow(10, exponent);
+    }
+
+    public static int intBase10Pow(int exponent) {
+        if (exponent < 0 || exponent > 9) {
+            throw new IllegalArgumentException("Exponent has to be in range [0,9] to fit in type 'int'. Got: " + exponent);
+        }
+        return (int) base10Pow(exponent);
     }
 
     public static int replace(int number, int replacementDigit, int replacementIndex) {
         if (replacementIndex < 0 || floor(number, replacementIndex) == 0) {
             throw new IllegalArgumentException();
         }
-        int base10Pow = (int) base10Pow(replacementIndex);
+        int base10Pow = intBase10Pow(replacementIndex);
 
         int left = floor(number, replacementIndex + 1);
         int replaced = replacementDigit * base10Pow;

@@ -3,6 +3,7 @@ package com.github.speisz.euler.utils;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
+import java.util.stream.IntStream;
 
 import static com.github.speisz.euler.utils.MathUtil.digits;
 import static com.github.speisz.euler.utils.MathUtil.floor;
@@ -139,4 +140,12 @@ class MathUtilsTest {
         assertThat(upperBase10Pow(101), is(1000));
         assertThat(upperBase10Pow(1000), is(1000));
     }
+
+    @Test
+    void name() {
+        IntStream.rangeClosed(1,100)
+                .forEach(exponent-> System.out.println(exponent+": "+ MathUtil.intBase10Pow(exponent)));
+        
+    }
+
 }

@@ -34,8 +34,12 @@ public abstract class MathUtil {
         return n.compareTo(m) < 1;
     }
 
-    public static boolean greaterOrEqual(BigInteger n, BigInteger m) {
+    public static boolean greaterThanOrEqualTo(BigInteger n, BigInteger m) {
         return n.compareTo(m) > -1;
+    }
+
+    public static boolean greaterThan(BigInteger n, BigInteger m) {
+        return n.compareTo(m) > 0;
     }
 
     public static boolean isPythagorean(Triple<Integer, Integer, Integer> triple) {

@@ -12,6 +12,7 @@ import static com.github.speisz.euler.utils.MathUtil.isPrime;
 import static com.github.speisz.euler.utils.MathUtil.lastDigits;
 import static com.github.speisz.euler.utils.MathUtil.pow;
 import static com.github.speisz.euler.utils.MathUtil.replace;
+import static com.github.speisz.euler.utils.MathUtil.reverse;
 import static com.github.speisz.euler.utils.MathUtil.roundedSqrt;
 import static com.github.speisz.euler.utils.MathUtil.square;
 import static com.github.speisz.euler.utils.MathUtil.upperBase10Pow;
@@ -142,10 +143,7 @@ class MathUtilsTest {
     }
 
     @Test
-    void name() {
-        IntStream.rangeClosed(1,100)
-                .forEach(exponent-> System.out.println(exponent+": "+ MathUtil.intBase10Pow(exponent)));
-        
+    void reversesLong() {
+        assertThat(reverse(1234), is(4321));
     }
-
 }

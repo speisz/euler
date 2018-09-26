@@ -3,7 +3,6 @@ package com.github.speisz.euler.utils;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
-import java.util.stream.IntStream;
 
 import static com.github.speisz.euler.utils.MathUtil.digits;
 import static com.github.speisz.euler.utils.MathUtil.floor;
@@ -144,6 +143,6 @@ class MathUtilsTest {
 
     @Test
     void reversesLong() {
-        assertThat(reverse(1234), is(4321));
+        assertThat(reverse(1234L), is(4321L));
     }
 }

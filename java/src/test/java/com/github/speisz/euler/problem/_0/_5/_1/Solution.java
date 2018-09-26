@@ -1,6 +1,7 @@
 package com.github.speisz.euler.problem._0._5._1;
 
 import com.github.speisz.euler.math.ScalingPrimeSieve;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
@@ -20,6 +21,7 @@ class Solution {
     private static final IntPredicate PRIME_SIEVE = new ScalingPrimeSieve(100_000, 10).toIntPredicate();
 
     @Test
+    @Disabled
     void findNumberWithReplacementsYieldingEightPrimes() {
         Set<Integer> primes1 = iterate(100, i -> i + 1).boxed()
                 .flatMap(this::replacementPrimes)

@@ -14,7 +14,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 class Solution {
 
-    private static final IntPredicate PRIME_SIEVE = new ScalingPrimeSieve(100, 10).toIntPredicate();
+    private static final IntPredicate PRIME_SIEVE = ScalingPrimeSieve.create(100, 10).toIntPredicate();
 
     @Test
     void findsFirstNonGoldbachNumber() {

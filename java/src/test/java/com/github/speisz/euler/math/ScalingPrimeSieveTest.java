@@ -15,7 +15,7 @@ class ScalingPrimeSieveTest {
 
     @BeforeEach
     public void setUp() {
-        sieve = new ScalingPrimeSieve(100, 10);
+        sieve = ScalingPrimeSieve.create(100, 10);
     }
 
     @Test

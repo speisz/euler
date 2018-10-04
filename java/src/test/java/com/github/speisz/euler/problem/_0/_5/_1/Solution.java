@@ -18,7 +18,7 @@ import static org.hamcrest.Matchers.is;
 
 class Solution {
 
-    private static final IntPredicate PRIME_SIEVE = new ScalingPrimeSieve(100_000, 10).toIntPredicate();
+    private static final IntPredicate PRIME_SIEVE = ScalingPrimeSieve.create(100_000, 10).toIntPredicate();
 
     @Test
     @Disabled

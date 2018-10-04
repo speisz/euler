@@ -19,7 +19,7 @@ public class TruncatablePrimes {
     }
 
     public TruncatablePrimes() {
-        this(new ScalingPrimeSieve(10_000, 10));
+        this(ScalingPrimeSieve.create(10_000, 10));
     }
 
     Stream<Integer> stream() {

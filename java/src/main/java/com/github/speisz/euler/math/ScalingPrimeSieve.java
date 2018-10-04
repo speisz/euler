@@ -16,8 +16,12 @@ public class ScalingPrimeSieve implements Predicate<Integer>, ToIntPredicate {
         sieve = sieveSupplier.apply(upperBound);
     }
 
-    public ScalingPrimeSieve(int initialUpperBound, int upperBoundMultiplier) {
+    private ScalingPrimeSieve(int initialUpperBound, int upperBoundMultiplier) {
         this(initialUpperBound, upperBoundMultiplier, SieveOfEratosthenes::createForUpperBound);
+    }
+
+    public static ScalingPrimeSieve create(int initialUpperBound, int upperBoundMultiplier) {
+        return new ScalingPrimeSieve(initialUpperBound, upperBoundMultiplier);
     }
 
     @Override

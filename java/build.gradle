@@ -5,7 +5,7 @@ plugins {
 ext {
     versions = [
             junit: '5.3.0',
-            java : '10'
+            java : JavaVersion.VERSION_1_10
     ]
 }
 

@@ -21,7 +21,7 @@ public class DigitReplacementPrimeFinder {
     }
 
     public DigitReplacementPrimeFinder(int n) {
-        this(SieveOfEratosthenes.createForUpperBound(upperBase10Pow(n + 1)).toIntPredicate(), n);
+        this(SieveOfEratosthenes.forUpperBound(upperBase10Pow(n + 1)).toIntPredicate(), n);
     }
 
     public Set<Integer> findReplacedAtDigits(int... indexes) {

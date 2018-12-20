@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.is;
 
 class Solution {
 
-    private static final SieveOfEratosthenes PRIME_SIEVE = SieveOfEratosthenes.createForUpperBound(10_000);
+    private static final SieveOfEratosthenes PRIME_SIEVE = SieveOfEratosthenes.forUpperBound(10_000);
     private static final IntPredicate INT_PRIME_SIEVE = PRIME_SIEVE.toIntPredicate();
     private static final int ALREADY_KNOWN = 1_487;
 

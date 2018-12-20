@@ -18,7 +18,7 @@ public class SieveOfEratosthenes implements Predicate<Integer>, ToIntPredicate {
         filterOutNonPrimes();
     }
 
-    public static SieveOfEratosthenes createForUpperBound(int upperBound) {
+    public static SieveOfEratosthenes forUpperBound(int upperBound) {
         return new SieveOfEratosthenes(upperBound);
     }
 

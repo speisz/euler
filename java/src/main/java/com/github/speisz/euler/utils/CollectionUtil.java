@@ -4,13 +4,16 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
+import static java.util.stream.Stream.concat;
 
 public final class CollectionUtil {
     public static <K, V> Map<K, V> hashMapOf(K key, V value) {
-        return new HashMap<K, V>() {{
+        return new HashMap<>() {{
             put(key, value);
         }};
     }
@@ -36,5 +39,9 @@ public final class CollectionUtil {
     }
 
     private CollectionUtil() {
+    }
+
+    public static <T> Set<T> setOf(Collection<T> existing, T newItem) {
+        return concat(existing.stream(), Stream.of(newItem)).collect(toSet());
     }
 }

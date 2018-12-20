@@ -17,7 +17,7 @@ class LongestChainsOfConsecutivePrimesAddingToAPrimeFinder {
 
     private LongestChainsOfConsecutivePrimesAddingToAPrimeFinder(int upper) {
         this.upper = upper;
-        primeSieve = SieveOfEratosthenes.createForUpperBound(upper).toIntPredicate();
+        primeSieve = SieveOfEratosthenes.forUpperBound(upper).toIntPredicate();
     }
 
     static LongestChainsOfConsecutivePrimesAddingToAPrimeFinder createLongestChainsOfConsecutivePrimesAddingToAPrimeFinder(int upper) {

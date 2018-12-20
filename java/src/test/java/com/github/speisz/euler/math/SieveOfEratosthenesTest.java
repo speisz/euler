@@ -14,7 +14,7 @@ class SieveOfEratosthenesTest {
 
     @Test
     void testsIfNumberIsPrime() {
-        SieveOfEratosthenes sieve = SieveOfEratosthenes.createForUpperBound(10);
+        SieveOfEratosthenes sieve = SieveOfEratosthenes.forUpperBound(10);
 
         IntStream.of(2, 3, 5, 7).forEach(n -> assertTrue(sieve.test(n), n + " is prime."));
         IntStream.of(4, 6, 9, 10, 1, 0, -1, -3).forEach(n -> assertFalse(sieve.test(n), n + " is not prime."));
@@ -22,7 +22,7 @@ class SieveOfEratosthenesTest {
 
     @Test
     void throwsExceptionIfNumberToTestIsOutOfRange() {
-        SieveOfEratosthenes sieve = SieveOfEratosthenes.createForUpperBound(10);
+        SieveOfEratosthenes sieve = SieveOfEratosthenes.forUpperBound(10);
         Exception thrownException = assertThrows(IllegalArgumentException.class, () -> sieve.test(11));
         assertThat(thrownException.getMessage(), containsString("11"));
     }

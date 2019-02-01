@@ -10,11 +10,11 @@ class TriangleNumberWithGivenDivisorCountTest {
 
     @Test
     void computesForLowDivisorCount() {
-        assertThat(new TriangleNumberWithGivenDivisorCount().compute(5), is(valueOf(28)));
+        assertThat(TriangleNumberWithGivenDivisorCount.compute(5), is(28L));
     }
 
     @Test
     void computesForHighDivisorCount() {
-        assertThat(new TriangleNumberWithGivenDivisorCount().compute(500), is(valueOf(76576500)));
+        assertThat(TriangleNumberWithGivenDivisorCount.compute(500), is(76_576_500L));
     }
 }

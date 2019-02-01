@@ -1,5 +1,6 @@
-package com.github.speisz.euler.math;
+package com.github.speisz.euler.math.polygonal;
 
+import com.github.speisz.euler.math.ToLongPredicate;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.HashSet;

@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem._0._4._5;
 
-import com.github.speisz.euler.math.IsHexagonal;
+import com.github.speisz.euler.math.polygonal.IsHexagonal;
 import com.github.speisz.euler.math.polygonal.IsPentagonal;
 import org.junit.jupiter.api.Test;
 

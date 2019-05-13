@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class IsPentagonalTest {
 
-    private static final IsPentagonal IS_PENTAGONAL = IsPentagonal.create();
+    private static final IsPentagonal IS_PENTAGONAL = IsPentagonal.create(10);
     private static final LongPredicate IS_PENTAGONAL_LONG = IS_PENTAGONAL.toLongPredicate();
 
     @Test

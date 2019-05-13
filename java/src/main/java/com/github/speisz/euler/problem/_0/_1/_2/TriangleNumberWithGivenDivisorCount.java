@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem._0._1._2;
 
-import com.github.speisz.euler.math.Polygonals;
+import com.github.speisz.euler.math.polygonal.Polygonals;
 
 import java.math.BigInteger;
 

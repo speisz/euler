@@ -1,6 +1,6 @@
 package com.github.speisz.euler.problem._0._6._1;
 
-import com.github.speisz.euler.math.Polygonals;
+import com.github.speisz.euler.math.polygonal.Polygonals;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

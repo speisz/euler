@@ -1,4 +1,4 @@
-package com.github.speisz.euler.math;
+package com.github.speisz.euler.math.polygonal;
 
 import org.junit.jupiter.api.Test;
 

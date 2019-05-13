@@ -1,10 +1,11 @@
-package com.github.speisz.euler.math;
+package com.github.speisz.euler.math.polygonal;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.function.LongPredicate;
 import java.util.stream.LongStream;
 
+import static java.util.stream.LongStream.range;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -29,7 +30,7 @@ class IsHexagonalTest {
 
     @Test
     void isEfficient() {
-        assertThat(LongStream.range(0, 10_000_000)
+        assertThat(range(0, 10_000_000)
                 .filter(IS_HEXAGONAL_LONG)
                 .count(), is(2236L));
     }

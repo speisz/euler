@@ -1,5 +1,6 @@
-package com.github.speisz.euler.math;
+package com.github.speisz.euler.math.polygonal;
 
+import com.github.speisz.euler.math.ToLongPredicate;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.HashSet;
@@ -15,9 +16,6 @@ import static java.lang.Math.sqrt;
 import static java.util.stream.Collectors.toSet;
 import static java.util.stream.LongStream.iterate;
 
-/**
- * H_n=n(2n−1)
- */
 public class IsHexagonal implements Predicate<Long>, ToLongPredicate {
     private long lastComputedHexagonal = 0;
     private long indexOfLastComputedHexagonal = 1;

@@ -42,32 +42,7 @@ class MathKtTest {
         @Test
         fun `generates permutations`() {
             assertThat(permutationsOf(1234).toList())
-                .containsExactlyInAnyOrder(
-                    1234,
-                    1243,
-                    1324,
-                    1342,
-                    1423,
-                    1432,
-                    2134,
-                    2143,
-                    2314,
-                    2341,
-                    2413,
-                    2431,
-                    3124,
-                    3142,
-                    3214,
-                    3241,
-                    3412,
-                    3421,
-                    4123,
-                    4132,
-                    4213,
-                    4231,
-                    4312,
-                    4321
-                )
+                .containsExactlyInAnyOrder(1234, 1243, 1324, 1342, 1423, 1432, 2134, 2143, 2314, 2341, 2413, 2431, 3124, 3142, 3214, 3241, 3412, 3421, 4123, 4132, 4213, 4231, 4312, 4321)
         }
 
         @Test
@@ -143,6 +118,22 @@ class MathKtTest {
                     .map(Int::toLong)
                     .any(1220L::isPermutationOf)
             ).isFalse()
+        }
+    }
+
+    @Nested
+    inner class Root {
+        @Test
+        fun `n-th root with precision`() {
+            assertThat(2.root(3, precision = 0)).isEqualTo(1f)
+            assertThat(8.root(3, precision = 0)).isEqualTo(2f)
+            assertThat(10_000.root(4, precision = 0)).isEqualTo(10f)
+
+            assertThat(2.root(3)).isEqualTo(1.2f)
+            assertThat(2.root(3, precision = 1)).isEqualTo(1.2f)
+            assertThat(2.root(3, precision = 2)).isEqualTo(1.25f)
+
+            assertThat(42.root(7, precision = 5)).isEqualTo(1.70566f)
         }
     }
 }

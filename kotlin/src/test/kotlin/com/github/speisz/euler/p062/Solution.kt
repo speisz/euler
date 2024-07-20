@@ -2,7 +2,7 @@ package com.github.speisz.euler.p062
 
 import com.github.speisz.euler.util.isPermutationOf
 import com.github.speisz.euler.util.naturalNumbers
-import com.github.speisz.euler.util.pow
+import com.github.speisz.euler.util.powInt
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import kotlin.math.min
@@ -11,7 +11,7 @@ class Solution {
 
     @Test
     fun solution() {
-        val cubes = naturalNumbers().map { it.pow(3) }.filter { it > 100_000_000_000 }.takeWhile { it < 1_000_000_000_000 }.toList()
+        val cubes = naturalNumbers().map { it.powInt(3) }.filter { it > 100_000_000_000 }.takeWhile { it < 1_000_000_000_000 }.toList()
 
         val smallestCubeWith5CubicPermutations = cubes.asSequence()
             .mapIndexedNotNull { index, cube ->
